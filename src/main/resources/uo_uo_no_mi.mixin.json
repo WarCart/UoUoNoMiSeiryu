@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "net.warcar.uo_uo_no_mi.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "AbilityProjectileMixin",
+    "LivingSizeMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "refmap": "mixins.uo_uo_no_mi.refmap.json",
+  "client": [
+  ]
+}
