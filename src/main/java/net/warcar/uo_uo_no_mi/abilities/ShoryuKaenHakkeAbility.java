@@ -45,7 +45,7 @@ public class ShoryuKaenHakkeAbility extends Ability {
 
     private void duringContinuityEvent(LivingEntity entity, IAbility ability) {
         float time = this.continuousComponent.getContinueTime();
-        Vector3d velocity = entity.getLookAngle().multiply(new Vector3d(5 * ((double)time / 10), 5, 5 * ((double)time / 10)));
+        Vector3d velocity = entity.getLookAngle().multiply(new Vector3d(2.5 * ((double)time / 10), 2.5  * ((double)time / 10), 2.5 * ((double)time / 10)));
         entity.setDeltaMovement(velocity);
         List<LivingEntity> targets = this.rangeComponent.getTargetsInArea(entity, 20);
         for (LivingEntity target : targets) {
