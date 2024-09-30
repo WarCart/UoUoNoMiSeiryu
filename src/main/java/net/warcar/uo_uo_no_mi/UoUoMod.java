@@ -15,6 +15,8 @@ public class UoUoMod {
     public static final Logger LOGGER = LogManager.getLogger();
     public UoUoMod() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+        UoAbilities.ABILITIES.register(bus);
+        UoAbilities.ITEMS.register(bus);
         UoAbilities.init();
         UoMorphs.init();
         MinecraftForge.EVENT_BUS.register(this);

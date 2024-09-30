@@ -1,14 +1,16 @@
 {
-  "item.mineminenomi.uo_uo_no_mi_model_seiryu": "Uo Uo no Mi, Model: Seiryu",
-  "ability.mineminenomi.boro_breath": "Boro Breath",
-  "ability.mineminenomi.kaen_daiko": "Kaen Daiko",
-  "ability.mineminenomi.kaifu": "Kaifu",
-  "ability.mineminenomi.seiryu_flight": "Seiryu Flight",
-  "ability.mineminenomi.seiryu_fly_point": "Seiryu Fly Point",
-  "ability.mineminenomi.seiryu_heavy_point": "Seiryu Heavy Point",
-  "ability.mineminenomi.shoryu_kaen_hakke": "Shoryu: Kaen Hakke",
-  "ability.mineminenomi.uo_uo_no_mi_model_seiryu": "Uo Uo no Mi, Model: Seiryu",
-  "ability.mineminenomi.uo_uo_no_mi_model_seiryu": "Uo Uo no Mi, Model: Seiryu",
-  "ability.mineminenomi.uo_uo_no_mi_model_seiryu": "Uo Uo no Mi, Model: Seiryu",
-  "ability.mineminenomi.uo_uo_no_mi_model_seiryu": "Uo Uo no Mi, Model: Seiryu"
+  "item.uo_uo_no_mi.uo_uo_no_mi_model_seiryu": "Uo Uo no Mi, Model: Seiryu",
+  "ability.uo_uo_no_mi.boro_breath": "Boro Breath",
+  "ability.uo_uo_no_mi.kaen_daiko": "Kaen Daiko",
+  "ability.uo_uo_no_mi.kaifu": "Kaifu",
+  "ability.uo_uo_no_mi.seiryu_flight": "Seiryu Flight",
+  "ability.uo_uo_no_mi.seiryu_fly_point": "Seiryu Fly Point",
+  "ability.uo_uo_no_mi.seiryu_heavy_point": "Seiryu Heavy Point",
+  "ability.uo_uo_no_mi.shoryu_kaen_hakke": "Shoryu: Kaen Hakke",
+  "ability.uo_uo_no_mi.boro_breath.description.0": "User creates huge fire attack destroying anything on its way",
+  "ability.uo_uo_no_mi.kaen_daiko.description.0": "User Coats himself with fire, dealing damage to everyone coming close",
+  "ability.uo_uo_no_mi.kaifu.description.0": "User creates crescent wind slashes",
+  "ability.uo_uo_no_mi.seiryu_fly_point.description.0": "User Transforms into flying dragon, giving him great resistance and damage boost",
+  "ability.uo_uo_no_mi.seiryu_heavy_point.description.0": "User Transforms into dragon-human Hybrid, giving him extreme resistance and damage boost",
+  "ability.uo_uo_no_mi.shoryu_kaen_hakke.description.0": "Blazing Hot User flights towards enemy at great speeds, scorching all around"
 }

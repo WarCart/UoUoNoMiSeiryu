@@ -1,8 +1,11 @@
 package net.warcar.uo_uo_no_mi.abilities;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.util.text.ITextComponent;
+import net.warcar.uo_uo_no_mi.UoUoMod;
 import net.warcar.uo_uo_no_mi.init.UoMorphs;
 import net.warcar.uo_uo_no_mi.mixins.AbilityProjectileMixin;
+import org.apache.commons.lang3.tuple.ImmutablePair;
 import xyz.pixelatedw.mineminenomi.api.abilities.*;
 import xyz.pixelatedw.mineminenomi.api.abilities.components.RequireMorphComponent;
 import xyz.pixelatedw.mineminenomi.api.helpers.AbilityHelper;
@@ -11,9 +14,10 @@ import xyz.pixelatedw.mineminenomi.entities.projectiles.rokushiki.RankyakuProjec
 import xyz.pixelatedw.mineminenomi.entities.projectiles.swordsman.YakkodoriProjectile;
 
 public class KaifuAbility extends RepeaterAbility2 {
+    private static final ITextComponent[] DESCRIPTION = AbilityHelper.registerDescriptionText(UoUoMod.MOD_ID, "kaifu", ImmutablePair.of("User creates crescent wind slashes", null));
     public static final AbilityCore<KaifuAbility> INSTANCE =
             new AbilityCore.Builder<>("Kaifu", AbilityCategory.DEVIL_FRUITS, KaifuAbility::new)
-                    .addDescriptionLine(AbilityDescriptionLine.NEW_LINE, RequireMorphComponent.getTooltip()).build();
+                    .addDescriptionLine(DESCRIPTION).addDescriptionLine(AbilityDescriptionLine.NEW_LINE, RequireMorphComponent.getTooltip()).build();
     private final RequireMorphComponent morphComponent;
     public KaifuAbility(AbilityCore<KaifuAbility> core) {
         super(core);

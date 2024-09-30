@@ -1,18 +1,21 @@
 package net.warcar.uo_uo_no_mi.abilities;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.util.text.ITextComponent;
+import net.warcar.uo_uo_no_mi.UoUoMod;
 import net.warcar.uo_uo_no_mi.init.UoMorphs;
-import xyz.pixelatedw.mineminenomi.api.abilities.Ability;
-import xyz.pixelatedw.mineminenomi.api.abilities.AbilityCategory;
-import xyz.pixelatedw.mineminenomi.api.abilities.AbilityCore;
-import xyz.pixelatedw.mineminenomi.api.abilities.IAbility;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import xyz.pixelatedw.mineminenomi.api.abilities.*;
 import xyz.pixelatedw.mineminenomi.api.abilities.components.ChargeComponent;
 import xyz.pixelatedw.mineminenomi.api.abilities.components.ContinuousComponent;
 import xyz.pixelatedw.mineminenomi.api.abilities.components.MorphComponent;
 import xyz.pixelatedw.mineminenomi.api.abilities.components.RequireMorphComponent;
+import xyz.pixelatedw.mineminenomi.api.helpers.AbilityHelper;
 
 public class KaenDaikoAbility extends Ability {
-    public static final AbilityCore<KaenDaikoAbility> INSTANCE = new AbilityCore.Builder<>("Kaen Daiko", AbilityCategory.DEVIL_FRUITS, KaenDaikoAbility::new).build();
+    private static final ITextComponent[] DESCRIPTION = AbilityHelper.registerDescriptionText(UoUoMod.MOD_ID, "kaen_daiko", ImmutablePair.of("User Coats himself with fire, dealing damage to everyone coming close", null));
+    public static final AbilityCore<KaenDaikoAbility> INSTANCE = new AbilityCore.Builder<>("Kaen Daiko", AbilityCategory.DEVIL_FRUITS, KaenDaikoAbility::new)
+            .addDescriptionLine(DESCRIPTION).addDescriptionLine(AbilityDescriptionLine.NEW_LINE, RequireMorphComponent.getTooltip()).build();
 
     private final RequireMorphComponent requireMorphComponent;
     private final MorphComponent morphComponent;

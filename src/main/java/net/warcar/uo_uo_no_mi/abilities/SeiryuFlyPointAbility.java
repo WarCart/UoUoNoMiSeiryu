@@ -6,10 +6,14 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.util.text.ITextComponent;
+import net.warcar.uo_uo_no_mi.UoUoMod;
 import net.warcar.uo_uo_no_mi.abilities.components.MultiBoxComponent;
 import net.warcar.uo_uo_no_mi.entities.LivingPartEntity;
 import net.warcar.uo_uo_no_mi.init.UoMorphs;
+import org.apache.commons.lang3.tuple.ImmutablePair;
 import xyz.pixelatedw.mineminenomi.api.abilities.*;
+import xyz.pixelatedw.mineminenomi.api.helpers.AbilityHelper;
 import xyz.pixelatedw.mineminenomi.api.helpers.AttributeHelper;
 import xyz.pixelatedw.mineminenomi.api.morph.MorphInfo;
 import xyz.pixelatedw.mineminenomi.data.entity.ability.AbilityDataCapability;
@@ -19,7 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SeiryuFlyPointAbility extends MorphAbility2 {
-    public static final AbilityCore<SeiryuFlyPointAbility> INSTANCE = new AbilityCore.Builder<>("Seiryu Fly Point", AbilityCategory.DEVIL_FRUITS, SeiryuFlyPointAbility::new).build();
+    private static final ITextComponent[] DESCRIPTION = AbilityHelper.registerDescriptionText(UoUoMod.MOD_ID, "seiryu_fly_point", ImmutablePair.of("User Transforms into flying dragon, giving him great resistance and damage boost", null));
+    public static final AbilityCore<SeiryuFlyPointAbility> INSTANCE = new AbilityCore.Builder<>("Seiryu Fly Point", AbilityCategory.DEVIL_FRUITS, SeiryuFlyPointAbility::new)
+            .addDescriptionLine(DESCRIPTION).build();
 
     private final MultiBoxComponent boxComponent;
 

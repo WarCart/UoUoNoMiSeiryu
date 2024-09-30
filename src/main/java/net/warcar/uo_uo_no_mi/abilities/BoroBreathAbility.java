@@ -1,12 +1,12 @@
 package net.warcar.uo_uo_no_mi.abilities;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.util.text.ITextComponent;
+import net.warcar.uo_uo_no_mi.UoUoMod;
 import net.warcar.uo_uo_no_mi.entities.projectiles.BoroBreathProjectile;
 import net.warcar.uo_uo_no_mi.init.UoMorphs;
-import xyz.pixelatedw.mineminenomi.api.abilities.Ability;
-import xyz.pixelatedw.mineminenomi.api.abilities.AbilityCategory;
-import xyz.pixelatedw.mineminenomi.api.abilities.AbilityCore;
-import xyz.pixelatedw.mineminenomi.api.abilities.IAbility;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import xyz.pixelatedw.mineminenomi.api.abilities.*;
 import xyz.pixelatedw.mineminenomi.api.abilities.components.ChargeComponent;
 import xyz.pixelatedw.mineminenomi.api.abilities.components.ProjectileComponent;
 import xyz.pixelatedw.mineminenomi.api.abilities.components.RequireMorphComponent;
@@ -15,7 +15,9 @@ import xyz.pixelatedw.mineminenomi.api.helpers.MorphHelper;
 import xyz.pixelatedw.mineminenomi.entities.projectiles.AbilityProjectileEntity;
 
 public class BoroBreathAbility extends Ability {
-    public static final AbilityCore<BoroBreathAbility> INSTANCE = new AbilityCore.Builder<>("Boro Breath", AbilityCategory.DEVIL_FRUITS, BoroBreathAbility::new).build();
+    private static final ITextComponent[] DESCRIPTION = AbilityHelper.registerDescriptionText(UoUoMod.MOD_ID, "boro_breath", ImmutablePair.of("User creates huge fire attack destroying anything on its way", null));
+    public static final AbilityCore<BoroBreathAbility> INSTANCE = new AbilityCore.Builder<>("Boro Breath", AbilityCategory.DEVIL_FRUITS, BoroBreathAbility::new)
+            .addDescriptionLine(DESCRIPTION).addDescriptionLine(AbilityDescriptionLine.NEW_LINE, RequireMorphComponent.getTooltip()).build();
 
     private final ChargeComponent chargeComponent;
     private final ProjectileComponent projectileComponent;

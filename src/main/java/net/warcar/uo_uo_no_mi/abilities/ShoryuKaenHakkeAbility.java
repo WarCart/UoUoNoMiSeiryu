@@ -2,12 +2,13 @@ package net.warcar.uo_uo_no_mi.abilities;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.util.text.ITextComponent;
+import net.warcar.uo_uo_no_mi.UoUoMod;
 import net.warcar.uo_uo_no_mi.init.UoMorphs;
-import xyz.pixelatedw.mineminenomi.api.abilities.Ability;
-import xyz.pixelatedw.mineminenomi.api.abilities.AbilityCategory;
-import xyz.pixelatedw.mineminenomi.api.abilities.AbilityCore;
-import xyz.pixelatedw.mineminenomi.api.abilities.IAbility;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import xyz.pixelatedw.mineminenomi.api.abilities.*;
 import xyz.pixelatedw.mineminenomi.api.abilities.components.*;
+import xyz.pixelatedw.mineminenomi.api.helpers.AbilityHelper;
 import xyz.pixelatedw.mineminenomi.init.ModAnimations;
 import xyz.pixelatedw.mineminenomi.init.ModParticleEffects;
 import xyz.pixelatedw.mineminenomi.particles.effects.ParticleEffect;
@@ -17,12 +18,15 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ShoryuKaenHakkeAbility extends Ability {
-    public static final AbilityCore<ShoryuKaenHakkeAbility> INSTANCE = new AbilityCore.Builder<>("Shoryu: Kaen Hakke", AbilityCategory.DEVIL_FRUITS, ShoryuKaenHakkeAbility::new).build();
+    private static final ITextComponent[] DESCRIPTION = AbilityHelper.registerDescriptionText(UoUoMod.MOD_ID, "shoryu_kaen_hakke", ImmutablePair.of("Blazing Hot User flights towards enemy at great speeds, scorching all around", null));
+    public static final AbilityCore<ShoryuKaenHakkeAbility> INSTANCE = new AbilityCore.Builder<>("Shoryu: Kaen Hakke", AbilityCategory.DEVIL_FRUITS, ShoryuKaenHakkeAbility::new)
+            .addDescriptionLine(DESCRIPTION).addDescriptionLine(AbilityDescriptionLine.NEW_LINE, RequireMorphComponent.getTooltip()).build();
     private final RequireMorphComponent requireMorphComponent;
     private final ContinuousComponent continuousComponent;
     private final RangeComponent rangeComponent;
     private final DealDamageComponent dealDamageComponent;
     private final HitTrackerComponent hitTrackerComponent;
+
     public ShoryuKaenHakkeAbility(AbilityCore<ShoryuKaenHakkeAbility> core) {
         super(core);
         this.requireMorphComponent = new RequireMorphComponent(this, UoMorphs.KAEN_DAIKO.get());
@@ -57,5 +61,6 @@ public class ShoryuKaenHakkeAbility extends Ability {
 
     private void endContinuityEvent(LivingEntity entity, IAbility ability) {
         this.cooldownComponent.startCooldown(entity, 4000);
+
     }
 }

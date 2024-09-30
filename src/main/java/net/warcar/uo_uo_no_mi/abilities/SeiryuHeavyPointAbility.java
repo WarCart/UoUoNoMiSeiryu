@@ -4,8 +4,12 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.potion.EffectInstance;
+import net.minecraft.util.text.ITextComponent;
+import net.warcar.uo_uo_no_mi.UoUoMod;
 import net.warcar.uo_uo_no_mi.init.UoMorphs;
+import org.apache.commons.lang3.tuple.ImmutablePair;
 import xyz.pixelatedw.mineminenomi.api.abilities.*;
+import xyz.pixelatedw.mineminenomi.api.helpers.AbilityHelper;
 import xyz.pixelatedw.mineminenomi.api.helpers.AttributeHelper;
 import xyz.pixelatedw.mineminenomi.api.morph.MorphInfo;
 import xyz.pixelatedw.mineminenomi.data.entity.ability.AbilityDataCapability;
@@ -15,7 +19,9 @@ import xyz.pixelatedw.mineminenomi.init.ModEffects;
 import java.util.UUID;
 
 public class SeiryuHeavyPointAbility extends MorphAbility2 {
-    public static final AbilityCore<SeiryuHeavyPointAbility> INSTANCE = new AbilityCore.Builder<>("Seiryu Heavy Point", AbilityCategory.DEVIL_FRUITS, SeiryuHeavyPointAbility::new).build();
+    private static final ITextComponent[] DESCRIPTION = AbilityHelper.registerDescriptionText(UoUoMod.MOD_ID, "seiryu_heavy_point", ImmutablePair.of("User Transforms into dragon-human Hybrid, giving him extreme resistance and damage boost", null));
+    public static final AbilityCore<SeiryuHeavyPointAbility> INSTANCE = new AbilityCore.Builder<>("Seiryu Heavy Point", AbilityCategory.DEVIL_FRUITS, SeiryuHeavyPointAbility::new)
+            .addDescriptionLine(DESCRIPTION).build();
 
     public SeiryuHeavyPointAbility(AbilityCore<SeiryuHeavyPointAbility> core) {
         super(core);
