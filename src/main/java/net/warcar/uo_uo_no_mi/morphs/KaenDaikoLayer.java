@@ -30,12 +30,10 @@ public class KaenDaikoLayer<T extends LivingEntity, M extends EntityModel<T>> ex
             this.model.renderToBuffer(matrixStack, buffer.getBuffer(ModRenderTypes.getZoanRenderType(this.getTextureLocation(entity))), packedLight, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
             KaenDaikoAbility ability = AbilityDataCapability.get(entity).getEquippedAbility(KaenDaikoAbility.INSTANCE);
             if (ability != null && ability.isContinuous()) {
-                for (int i = 0; i < 10; i++) {
-                    matrixStack.pushPose();
-                    matrixStack.scale(1 + (float) i / 2, 1 + (float) i / 2, 1 + (float) i / 2);
-                    this.model.renderToBuffer(matrixStack, buffer.getBuffer(ModRenderTypes.TRANSPARENT_COLOR), packedLight, OverlayTexture.NO_OVERLAY, 1, 1-(float) i / 10, 0.3f-(float) i / 30, 0.3f);
-                    matrixStack.popPose();
-                }
+                matrixStack.pushPose();
+                matrixStack.scale(5, 5, 5);
+                this.model.renderToBuffer(matrixStack, buffer.getBuffer(ModRenderTypes.TRANSPARENT_COLOR), packedLight, OverlayTexture.NO_OVERLAY, 1, 0.2f, 0, 0.3f);
+                matrixStack.popPose();
             }
         }
     }

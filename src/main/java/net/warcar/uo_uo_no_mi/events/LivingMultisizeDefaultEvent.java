@@ -9,7 +9,7 @@ import xyz.pixelatedw.mineminenomi.data.entity.ability.AbilityDataCapability;
 import xyz.pixelatedw.mineminenomi.data.entity.ability.IAbilityData;
 
 @Mod.EventBusSubscriber(modid = UoUoMod.MOD_ID)
-public class LivingDefaultMultisizeEvent {
+public class LivingMultisizeDefaultEvent {
     @SubscribeEvent
     public static void onEvent(LivingMultisizeEvent event) {
         IAbilityData data = AbilityDataCapability.get(event.getEntityLiving());

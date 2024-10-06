@@ -4,98 +4,16 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.HandSide;
+import net.warcar.uo_uo_no_mi.abilities.BoroBreathAbility;
+import net.warcar.uo_uo_no_mi.abilities.KaifuAbility;
 import xyz.pixelatedw.mineminenomi.api.morph.MorphModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
+import xyz.pixelatedw.mineminenomi.data.entity.ability.AbilityDataCapability;
+import xyz.pixelatedw.mineminenomi.data.entity.ability.IAbilityData;
 
 public class SeiryuFlyModel extends MorphModel<LivingEntity> {
-    private final ModelRenderer headsection1;
-    private final ModelRenderer backhead;
-    private final ModelRenderer leftface;
-    private final ModelRenderer leftface1_r1;
-    private final ModelRenderer lefteyeoverlay;
-    private final ModelRenderer lefteyeoverlay1_r1;
-    private final ModelRenderer rightface;
-    private final ModelRenderer rightface1_r1;
-    private final ModelRenderer righteyeoverlay;
-    private final ModelRenderer righteyeoverlay1_r1;
-    private final ModelRenderer leftfireflare;
-    private final ModelRenderer rightfireflare;
-    private final ModelRenderer mainfireflare;
-    private final ModelRenderer lefthornsection1;
-    private final ModelRenderer lefthornsection2;
-    private final ModelRenderer lefthornsection3;
-    private final ModelRenderer lefthornsection4;
-    private final ModelRenderer lefthornsection5;
-    private final ModelRenderer lefthornsection6;
-    private final ModelRenderer lefthornsection7;
-    private final ModelRenderer lefthornsection9;
-    private final ModelRenderer righthornsection1;
-    private final ModelRenderer righthornsection2;
-    private final ModelRenderer righthornsection3;
-    private final ModelRenderer righthornsection4;
-    private final ModelRenderer righthornsection5;
-    private final ModelRenderer righthornsection6;
-    private final ModelRenderer righthornsection7;
-    private final ModelRenderer righthornsection9;
-    private final ModelRenderer upperjaw;
-    private final ModelRenderer upperteeth;
-    private final ModelRenderer upperlefttooth;
-    private final ModelRenderer upperrighttooth;
-    private final ModelRenderer lowerjaw;
-    private final ModelRenderer lowerteeth;
-    private final ModelRenderer lowerlefttooth;
-    private final ModelRenderer lowerrighttooth;
-    private final ModelRenderer lowerjawdetail;
     private final ModelRenderer necksection1;
     private final ModelRenderer bodysection1;
-    private final ModelRenderer leftarm;
-    private final ModelRenderer upperleftarm;
-    private final ModelRenderer lowerleftarm;
-    private final ModelRenderer lefthand;
-    private final ModelRenderer leftthumbsection1;
-    private final ModelRenderer leftthumbsection2;
-    private final ModelRenderer leftthumbsection3;
-    private final ModelRenderer leftthumbsection4;
-    private final ModelRenderer leftpointfingersection1;
-    private final ModelRenderer leftpointfingersection2;
-    private final ModelRenderer leftpointfingersection3;
-    private final ModelRenderer leftpointfingersection4;
-    private final ModelRenderer leftmiddlefingersection1;
-    private final ModelRenderer leftmiddlefingersection2;
-    private final ModelRenderer leftmiddlefingersection3;
-    private final ModelRenderer leftmiddlefingersection4;
-    private final ModelRenderer leftringfingersection1;
-    private final ModelRenderer leftringfingersection2;
-    private final ModelRenderer leftringfingersection3;
-    private final ModelRenderer leftringfingersection4;
-    private final ModelRenderer leftpinkyfingersection1;
-    private final ModelRenderer leftpinkyfingersection2;
-    private final ModelRenderer leftpinkyfingersection3;
-    private final ModelRenderer leftpinkyfingersection4;
-    private final ModelRenderer rightarm;
-    private final ModelRenderer upperrightarm;
-    private final ModelRenderer lowerrightarm;
-    private final ModelRenderer righthand;
-    private final ModelRenderer rightthumbsection1;
-    private final ModelRenderer rightthumbsection;
-    private final ModelRenderer rightthumbsection3;
-    private final ModelRenderer rightthumbsection4;
-    private final ModelRenderer rightpointfingersection1;
-    private final ModelRenderer rightpointfingersection2;
-    private final ModelRenderer rightpointfingersection3;
-    private final ModelRenderer rightpointfingersection4;
-    private final ModelRenderer rightmiddlefingersection1;
-    private final ModelRenderer rightmiddlefingersection2;
-    private final ModelRenderer rightmiddlefingersection3;
-    private final ModelRenderer rightmiddlefingersection4;
-    private final ModelRenderer rightringfingersection1;
-    private final ModelRenderer rightringfingersection2;
-    private final ModelRenderer rightringfingersection3;
-    private final ModelRenderer rightringfingersection4;
-    private final ModelRenderer rightpinkyfingersection1;
-    private final ModelRenderer rightpinkyfingersection2;
-    private final ModelRenderer rightpinkyfingersection3;
-    private final ModelRenderer rightpinkyfingersection4;
     private final ModelRenderer bodysection2;
     private final ModelRenderer bodysection3;
     private final ModelRenderer bodysection4;
@@ -106,495 +24,452 @@ public class SeiryuFlyModel extends MorphModel<LivingEntity> {
     private final ModelRenderer bodysection9;
     private final ModelRenderer bodysection10;
     private final ModelRenderer bodysection11;
-    private final ModelRenderer tail1;
+    private final ModelRenderer bodysection12;
+    private final ModelRenderer bodysection13;
+    private final ModelRenderer bodysection14;
+    private final ModelRenderer bodysection15;
+    private final ModelRenderer bodysection16;
+    private final ModelRenderer bodysection17;
+    private final ModelRenderer bodysection18;
+    private final ModelRenderer bodysection19;
+    private final ModelRenderer[] body;
+    private final ModelRenderer rightarm2;
+    private final ModelRenderer upperrightarm2;
+    private final ModelRenderer lowerrightarm2;
+    private final ModelRenderer righthand2;
+    private final ModelRenderer rightthumbsection7;
+    private final ModelRenderer rightthumbsection6;
+    private final ModelRenderer rightthumbsection5;
+    private final ModelRenderer rightthumbsection2;
+    private final ModelRenderer rightpointfingersection8;
+    private final ModelRenderer rightpointfingersection7;
+    private final ModelRenderer rightpointfingersection6;
+    private final ModelRenderer rightpointfingersection5;
+    private final ModelRenderer rightmiddlefingersection8;
+    private final ModelRenderer rightmiddlefingersection7;
+    private final ModelRenderer rightmiddlefingersection6;
+    private final ModelRenderer rightmiddlefingersection5;
+    private final ModelRenderer rightringfingersection8;
+    private final ModelRenderer rightringfingersection7;
+    private final ModelRenderer rightringfingersection6;
+    private final ModelRenderer rightringfingersection5;
+    private final ModelRenderer rightpinkyfingersection8;
+    private final ModelRenderer rightpinkyfingersection7;
+    private final ModelRenderer rightpinkyfingersection6;
+    private final ModelRenderer rightpinkyfingersection5;
+    private final ModelRenderer leftarm2;
+    private final ModelRenderer upperleftarm2;
+    private final ModelRenderer lowerleftarm2;
+    private final ModelRenderer lefthand2;
+    private final ModelRenderer leftthumbsection8;
+    private final ModelRenderer leftthumbsection7;
+    private final ModelRenderer leftthumbsection6;
+    private final ModelRenderer leftthumbsection5;
+    private final ModelRenderer leftpointfingersection8;
+    private final ModelRenderer leftpointfingersection7;
+    private final ModelRenderer leftpointfingersection6;
+    private final ModelRenderer leftpointfingersection5;
+    private final ModelRenderer leftmiddlefingersection8;
+    private final ModelRenderer leftmiddlefingersection7;
+    private final ModelRenderer leftmiddlefingersection6;
+    private final ModelRenderer leftmiddlefingersection5;
+    private final ModelRenderer leftringfingersection8;
+    private final ModelRenderer leftringfingersection7;
+    private final ModelRenderer leftringfingersection6;
+    private final ModelRenderer leftringfingersection5;
+    private final ModelRenderer leftpinkyfingersection8;
+    private final ModelRenderer leftpinkyfingersection7;
+    private final ModelRenderer leftpinkyfingersection6;
+    private final ModelRenderer leftpinkyfingersection5;
+    private final ModelRenderer head;
+    private final ModelRenderer downhead;
+    private final ModelRenderer head_r1;
 
     public SeiryuFlyModel() {
         super(0);
-        this.texWidth = 512;
-        this.texHeight = 512;
-        this.headsection1 = new ModelRenderer(this);
-        this.headsection1.setPos(-0.0854F, 15.1502F, -5.9749F);
-        this.headsection1.texOffs(68, 162).addBox(-6.9719F, 1.118F, -2.7839F, 14.0F, 8.0F, 8.0F, 0.0F, false);
-        this.backhead = new ModelRenderer(this);
-        this.backhead.setPos(-0.0234F, 0.8987F, 1.2605F);
-        this.headsection1.addChild(this.backhead);
-        this.setRotationAngle(this.backhead, -0.0873F, 0.0F, 0.0F);
-        this.backhead.texOffs(68, 179).addBox(-6.0438F, -4.38F, -1.83F, 12.0F, 13.0F, 10.0F, 0.01F, false);
-        this.leftface = new ModelRenderer(this);
-        this.leftface.setPos(2.9662F, -1.89F, -2.84F);
-        this.backhead.addChild(this.leftface);
-        this.setRotationAngle(this.leftface, 0.0F, -0.2618F, 0.0F);
-        this.leftface1_r1 = new ModelRenderer(this);
-        this.leftface1_r1.setPos(0.119F, -1.8043F, -0.9688F);
-        this.leftface.addChild(this.leftface1_r1);
-        this.setRotationAngle(this.leftface1_r1, 0.0F, 0.0F, 0.0F);
-        this.leftface1_r1.texOffs(81, 155).addBox(-3.2556F, -0.7719F, 0.9079F, 6.0F, 5.0F, 3.0F, 0.0F, false);
-        this.lefteyeoverlay = new ModelRenderer(this);
-        this.lefteyeoverlay.setPos(-0.1366F, -0.0763F, 1.439F);
-        this.leftface.addChild(this.lefteyeoverlay);
-        this.lefteyeoverlay1_r1 = new ModelRenderer(this);
-        this.lefteyeoverlay1_r1.setPos(0.2556F, -1.7281F, -2.4079F);
-        this.lefteyeoverlay.addChild(this.lefteyeoverlay1_r1);
-        this.setRotationAngle(this.lefteyeoverlay1_r1, 0.0F, 0.0F, 0.0F);
-        this.lefteyeoverlay1_r1.texOffs(84, 158).addBox(-3.2556F, -0.7719F, 0.9032F, 6.0F, 5.0F, 0.0F, 0.0F, false);
-        this.rightface = new ModelRenderer(this);
-        this.rightface.setPos(-3.0537F, -1.89F, -2.84F);
-        this.backhead.addChild(this.rightface);
-        this.setRotationAngle(this.rightface, 0.0F, 0.2618F, 0.0F);
-        this.rightface1_r1 = new ModelRenderer(this);
-        this.rightface1_r1.setPos(0.6798F, -1.8043F, -0.784F);
-        this.rightface.addChild(this.rightface1_r1);
-        this.setRotationAngle(this.rightface1_r1, 0.0F, 0.0F, 0.0F);
-        this.rightface1_r1.texOffs(81, 155).addBox(-3.5508F, -0.7719F, 0.721F, 6.0F, 5.0F, 3.0F, 0.0F, false);
-        this.righteyeoverlay = new ModelRenderer(this);
-        this.righteyeoverlay.setPos(-0.6852F, -0.3823F, -0.2448F);
-        this.rightface.addChild(this.righteyeoverlay);
-        this.righteyeoverlay1_r1 = new ModelRenderer(this);
-        this.righteyeoverlay1_r1.setPos(1.3649F, -1.422F, -0.5393F);
-        this.righteyeoverlay.addChild(this.righteyeoverlay1_r1);
-        this.setRotationAngle(this.righteyeoverlay1_r1, 0.0F, 0.0F, 0.0F);
-        this.righteyeoverlay1_r1.texOffs(84, 158).addBox(-3.5508F, -0.7719F, 0.7184F, 6.0F, 5.0F, 0.0F, 0.0F, false);
-        this.leftfireflare = new ModelRenderer(this);
-        this.leftfireflare.setPos(7.1089F, 4.12F, -1.83F);
-        this.backhead.addChild(this.leftfireflare);
-        this.setRotationAngle(this.leftfireflare, 0.0F, 0.4363F, 0.0F);
-        this.leftfireflare.texOffs(69, 180).addBox(-0.0525F, -3.5F, 0.0F, 0.0F, 7.0F, 9.0F, 0.0F, true);
-        this.rightfireflare = new ModelRenderer(this);
-        this.rightfireflare.setPos(-6.9536F, 4.12F, -1.83F);
-        this.backhead.addChild(this.rightfireflare);
-        this.setRotationAngle(this.rightfireflare, 0.0F, -0.4363F, 0.0F);
-        this.rightfireflare.texOffs(69, 180).addBox(0.0F, -3.5F, 0.0F, 0.0F, 7.0F, 9.0F, 0.0F, false);
-        this.mainfireflare = new ModelRenderer(this);
-        this.mainfireflare.setPos(0.0537F, -4.2551F, -0.8408F);
-        this.backhead.addChild(this.mainfireflare);
-        this.setRotationAngle(this.mainfireflare, 0.7854F, 0.0F, 0.0F);
-        this.mainfireflare.texOffs(329, 52).addBox(-6.0975F, -0.7919F, -0.6012F, 12.0F, 0.0F, 9.0F, 0.01F, false);
-        this.lefthornsection1 = new ModelRenderer(this);
-        this.lefthornsection1.setPos(4.9989F, -2.3687F, 2.9882F);
-        this.backhead.addChild(this.lefthornsection1);
-        this.setRotationAngle(this.lefthornsection1, 0.0244F, -0.3935F, -0.4923F);
-        this.lefthornsection1.texOffs(-2, -2).addBox(-2.6F, -2.6F, -2.4F, 7.0F, 5.0F, 5.0F, 0.1F, false);
-        this.lefthornsection2 = new ModelRenderer(this);
-        this.lefthornsection2.setPos(6.7566F, -13.4905F, -1.5387F);
-        this.lefthornsection1.addChild(this.lefthornsection2);
-        this.setRotationAngle(this.lefthornsection2, 0.0F, 0.0F, -0.3927F);
-        this.lefthornsection2.texOffs(-1, -1).addBox(-8.44F, 9.4573F, -0.4113F, 4.0F, 4.0F, 4.0F, 0.2F, false);
-        this.lefthornsection3 = new ModelRenderer(this);
-        this.lefthornsection3.setPos(-4.0421F, -1.35F, -0.1067F);
-        this.lefthornsection2.addChild(this.lefthornsection3);
-        this.setRotationAngle(this.lefthornsection3, 0.0328F, -0.0616F, -0.4897F);
-        this.lefthornsection3.texOffs(0, 0).addBox(-7.0078F, 9.7673F, 0.2002F, 3.0F, 3.0F, 3.0F, 0.3F, false);
-        this.lefthornsection4 = new ModelRenderer(this);
-        this.lefthornsection4.setPos(-2.3902F, -1.525F, -0.016F);
-        this.lefthornsection3.addChild(this.lefthornsection4);
-        this.setRotationAngle(this.lefthornsection4, 0.0217F, -0.0698F, -0.4306F);
-        this.lefthornsection4.texOffs(-1, -1).addBox(-7.29F, 9.6073F, 0.4387F, 3.0F, 3.0F, 3.0F, 0.0F, false);
-        this.lefthornsection5 = new ModelRenderer(this);
-        this.lefthornsection5.setPos(-2.7F, -1.65F, 0.4375F);
-        this.lefthornsection4.addChild(this.lefthornsection5);
-        this.setRotationAngle(this.lefthornsection5, 0.0F, 0.0F, -0.3491F);
-        this.lefthornsection5.texOffs(0, 0).addBox(-6.14F, 10.5073F, 0.5387F, 2.0F, 2.0F, 2.0F, 0.25F, false);
-        this.lefthornsection6 = new ModelRenderer(this);
-        this.lefthornsection6.setPos(3.775F, 0.6F, 0.4375F);
-        this.lefthornsection5.addChild(this.lefthornsection6);
-        this.setRotationAngle(this.lefthornsection6, 0.0203F, -0.1116F, 0.073F);
-        this.lefthornsection6.texOffs(0, 0).addBox(-6.7343F, 10.4825F, 0.6287F, 2.0F, 2.0F, 2.0F, 0.16F, false);
-        this.lefthornsection7 = new ModelRenderer(this);
-        this.lefthornsection7.setPos(6.125F, 4.0375F, 0.5F);
-        this.lefthornsection6.addChild(this.lefthornsection7);
-        this.setRotationAngle(this.lefthornsection7, -0.0218F, -0.0524F, 0.4581F);
-        this.lefthornsection7.texOffs(0, 0).addBox(-6.7843F, 10.3825F, 0.7287F, 2.0F, 2.0F, 2.0F, 0.0F, false);
-        this.lefthornsection9 = new ModelRenderer(this);
-        this.lefthornsection9.setPos(5.0F, 2.7875F, -0.0625F);
-        this.lefthornsection7.addChild(this.lefthornsection9);
-        this.setRotationAngle(this.lefthornsection9, 0.0F, 0.0F, 0.3272F);
-        this.lefthornsection9.texOffs(0, 0).addBox(-6.8237F, 10.337F, 0.7912F, 4.0F, 2.0F, 2.0F, 0.0F, false);
-        this.righthornsection1 = new ModelRenderer(this);
-        this.righthornsection1.setPos(-4.7812F, -2.3687F, 2.9882F);
-        this.backhead.addChild(this.righthornsection1);
-        this.setRotationAngle(this.righthornsection1, 0.0244F, 0.3935F, 0.4923F);
-        this.righthornsection1.texOffs(-2, -2).addBox(-4.4F, -2.6F, -2.4F, 7.0F, 5.0F, 5.0F, 0.1F, true);
-        this.righthornsection2 = new ModelRenderer(this);
-        this.righthornsection2.setPos(-6.7566F, -13.4905F, -1.5387F);
-        this.righthornsection1.addChild(this.righthornsection2);
-        this.setRotationAngle(this.righthornsection2, 0.0F, 0.0F, 0.3927F);
-        this.righthornsection2.texOffs(-1, -1).addBox(4.44F, 9.4573F, -0.4113F, 4.0F, 4.0F, 4.0F, 0.2F, true);
-        this.righthornsection3 = new ModelRenderer(this);
-        this.righthornsection3.setPos(4.0421F, -1.35F, -0.1067F);
-        this.righthornsection2.addChild(this.righthornsection3);
-        this.setRotationAngle(this.righthornsection3, 0.0328F, 0.0616F, 0.4897F);
-        this.righthornsection3.texOffs(0, 0).addBox(4.0078F, 9.7673F, 0.2002F, 3.0F, 3.0F, 3.0F, 0.3F, true);
-        this.righthornsection4 = new ModelRenderer(this);
-        this.righthornsection4.setPos(2.3902F, -1.525F, -0.016F);
-        this.righthornsection3.addChild(this.righthornsection4);
-        this.setRotationAngle(this.righthornsection4, 0.0217F, 0.0698F, 0.4306F);
-        this.righthornsection4.texOffs(-1, -1).addBox(4.29F, 9.6073F, 0.4387F, 3.0F, 3.0F, 3.0F, 0.0F, true);
-        this.righthornsection5 = new ModelRenderer(this);
-        this.righthornsection5.setPos(2.7F, -1.65F, 0.4375F);
-        this.righthornsection4.addChild(this.righthornsection5);
-        this.setRotationAngle(this.righthornsection5, 0.0F, 0.0F, 0.3491F);
-        this.righthornsection5.texOffs(0, 0).addBox(4.14F, 10.5073F, 0.5387F, 2.0F, 2.0F, 2.0F, 0.25F, true);
-        this.righthornsection6 = new ModelRenderer(this);
-        this.righthornsection6.setPos(-3.775F, 0.6F, 0.4375F);
-        this.righthornsection5.addChild(this.righthornsection6);
-        this.setRotationAngle(this.righthornsection6, 0.0203F, 0.1116F, -0.073F);
-        this.righthornsection6.texOffs(0, 0).addBox(4.7343F, 10.4825F, 0.6287F, 2.0F, 2.0F, 2.0F, 0.16F, true);
-        this.righthornsection7 = new ModelRenderer(this);
-        this.righthornsection7.setPos(-6.125F, 4.0375F, 0.5F);
-        this.righthornsection6.addChild(this.righthornsection7);
-        this.setRotationAngle(this.righthornsection7, -0.0218F, 0.0524F, -0.4581F);
-        this.righthornsection7.texOffs(0, 0).addBox(4.7843F, 10.3825F, 0.7287F, 2.0F, 2.0F, 2.0F, 0.0F, true);
-        this.righthornsection9 = new ModelRenderer(this);
-        this.righthornsection9.setPos(-5.0F, 2.7875F, -0.0625F);
-        this.righthornsection7.addChild(this.righthornsection9);
-        this.setRotationAngle(this.righthornsection9, 0.0F, 0.0F, -0.3272F);
-        this.righthornsection9.texOffs(0, 0).addBox(2.8237F, 10.337F, 0.7912F, 4.0F, 2.0F, 2.0F, 0.0F, true);
-        this.upperjaw = new ModelRenderer(this);
-        this.upperjaw.setPos(-0.0588F, 4.6298F, -1.8479F);
-        this.headsection1.addChild(this.upperjaw);
-        this.setRotationAngle(this.upperjaw, -0.2182F, 0.0F, 0.0F);
-        this.upperjaw.texOffs(5, 212).addBox(-3.4506F, -3.2757F, -9.7032F, 7.0F, 1.0F, 10.0F, 0.0F, false);
-        this.upperjaw.texOffs(4, 93).addBox(-5.4781F, -2.6257F, -8.9232F, 11.0F, 5.0F, 9.0F, 0.0F, false);
-        this.upperjaw.texOffs(39, 216).addBox(-4.5106F, -2.8431F, -9.7957F, 9.0F, 3.0F, 3.0F, 0.05F, false);
-        this.upperjaw.texOffs(38, 208).addBox(-2.5106F, -3.7757F, -10.2227F, 5.0F, 3.0F, 4.0F, -0.1F, false);
-        this.upperteeth = new ModelRenderer(this);
-        this.upperteeth.setPos(3.1624F, -39.7937F, 193.4283F);
-        this.upperjaw.addChild(this.upperteeth);
-        this.upperteeth.texOffs(2, 117).addBox(-8.173F, 41.0731F, -201.0089F, 10.0F, 3.0F, 0.0F, 0.0F, false);
-        this.upperteeth.texOffs(4, 117).addBox(-8.173F, 41.0731F, -201.0089F, 0.0F, 3.0F, 8.0F, 0.0F, false);
-        this.upperteeth.texOffs(4, 117).addBox(1.827F, 41.0731F, -201.0089F, 0.0F, 3.0F, 8.0F, 0.0F, false);
-        this.upperlefttooth = new ModelRenderer(this);
-        this.upperlefttooth.setPos(1.6762F, 41.3716F, -198.0714F);
-        this.upperteeth.addChild(this.upperlefttooth);
-        this.setRotationAngle(this.upperlefttooth, 0.0F, 0.0F, -0.3491F);
-        this.upperlefttooth.texOffs(10, 123).addBox(0.0121F, -0.0118F, -1.0F, 0.0F, 4.0F, 2.0F, 0.0F, false);
-        this.upperrighttooth = new ModelRenderer(this);
-        this.upperrighttooth.setPos(-8.0251F, 41.3716F, -198.0714F);
-        this.upperteeth.addChild(this.upperrighttooth);
-        this.setRotationAngle(this.upperrighttooth, 0.0F, 0.0F, 0.3491F);
-        this.upperrighttooth.texOffs(10, 123).addBox(-0.0121F, -0.0118F, -1.0F, 0.0F, 4.0F, 2.0F, 0.0F, true);
-        this.lowerjaw = new ModelRenderer(this);
-        this.lowerjaw.setPos(-0.0697F, 7.2992F, -2.0908F);
-        this.headsection1.addChild(this.lowerjaw);
-        this.lowerjaw.texOffs(7, 78).addBox(-4.5F, -2.0575F, -8.0F, 9.0F, 3.0F, 8.0F, 0.6F, false);
-        this.lowerteeth = new ModelRenderer(this);
-        this.lowerteeth.setPos(3.1733F, 0.7863F, 197.7299F);
-        this.lowerjaw.addChild(this.lowerteeth);
-        this.lowerteeth.texOffs(2, 121).addBox(-7.1733F, -5.4338F, -205.1049F, 8.0F, 3.0F, 0.0F, 0.0F, false);
-        this.lowerteeth.texOffs(4, 121).addBox(0.8267F, -5.4338F, -205.1049F, 0.0F, 3.0F, 8.0F, 0.0F, false);
-        this.lowerteeth.texOffs(4, 121).addBox(-7.1733F, -5.4338F, -205.1049F, 0.0F, 3.0F, 8.0F, 0.0F, false);
-        this.lowerlefttooth = new ModelRenderer(this);
-        this.lowerlefttooth.setPos(0.7642F, -3.4338F, -202.7299F);
-        this.lowerteeth.addChild(this.lowerlefttooth);
-        this.setRotationAngle(this.lowerlefttooth, 0.0F, 0.0F, 0.3491F);
-        this.lowerlefttooth.texOffs(10, 127).addBox(0.1875F, -3.5F, -1.0F, 0.0F, 4.0F, 2.0F, 0.0F, false);
-        this.lowerrighttooth = new ModelRenderer(this);
-        this.lowerrighttooth.setPos(-7.1131F, -3.4338F, -202.7299F);
-        this.lowerteeth.addChild(this.lowerrighttooth);
-        this.setRotationAngle(this.lowerrighttooth, 0.0F, 0.0F, -0.3491F);
-        this.lowerrighttooth.texOffs(10, 127).addBox(-0.1875F, -3.5F, -1.0F, 0.0F, 4.0F, 2.0F, 0.0F, true);
-        this.lowerjawdetail = new ModelRenderer(this);
-        this.lowerjawdetail.setPos(-0.0303F, 1.3089F, -8.3673F);
-        this.lowerjaw.addChild(this.lowerjawdetail);
-        this.setRotationAngle(this.lowerjawdetail, -0.7418F, 0.0F, 0.0F);
-        this.lowerjawdetail.texOffs(21, 117).addBox(-5.5F, 0.0349F, -4.0E-4F, 11.0F, 4.0F, 0.0F, 0.0F, false);
-        this.necksection1 = new ModelRenderer(this);
-        this.necksection1.setPos(-0.1666F, 19.3429F, 0.901F);
-        this.necksection1.texOffs(69, 203).addBox(-5.5F, -4.5F, -3.4375F, 11.0F, 9.0F, 11.0F, 0.0F, false);
-        this.bodysection1 = new ModelRenderer(this);
-        this.bodysection1.setPos(0.1558F, 0.4311F, 4.57F);
-        this.necksection1.addChild(this.bodysection1);
-        this.bodysection1.texOffs(338, 42).addBox(-0.0568F, -18.7446F, -1.795F, 0.0F, 16.0F, 20.0F, 0.0F, false);
-        this.bodysection1.texOffs(152, 388).addBox(-6.4432F, -5.1304F, 0.2325F, 13.0F, 10.0F, 18.0F, 0.0F, false);
-        this.leftarm = new ModelRenderer(this);
-        this.leftarm.setPos(7.1603F, 2.2059F, 9.2223F);
-        this.bodysection1.addChild(this.leftarm);
-        this.setRotationAngle(this.leftarm, 0.0F, 0.3491F, 0.1745F);
-        this.leftarm.texOffs(2, 26).addBox(-2.5F, -2.5F, -3.5F, 5.0F, 5.0F, 7.0F, 0.6F, false);
-        this.upperleftarm = new ModelRenderer(this);
-        this.upperleftarm.setPos(2.45F, 0.1245F, -0.0354F);
-        this.leftarm.addChild(this.upperleftarm);
-        this.setRotationAngle(this.upperleftarm, 0.0F, 0.0F, 0.3927F);
-        this.upperleftarm.texOffs(112, 26).addBox(-0.9375F, -2.5F, -3.5F, 26.0F, 5.0F, 7.0F, 0.02F, false);
-        this.lowerleftarm = new ModelRenderer(this);
-        this.lowerleftarm.setPos(23.4475F, 0.4134F, 0.1053F);
-        this.upperleftarm.addChild(this.lowerleftarm);
-        this.setRotationAngle(this.lowerleftarm, 0.0F, 0.9599F, 0.0F);
-        this.lowerleftarm.texOffs(123, 1).addBox(-2.3931F, -2.4588F, -3.63F, 20.0F, 4.0F, 7.0F, 0.02F, false);
-        this.lefthand = new ModelRenderer(this);
-        this.lefthand.setPos(16.4105F, -1.3282F, 0.0265F);
-        this.lowerleftarm.addChild(this.lefthand);
-        this.lefthand.texOffs(32, 10).addBox(-0.0625F, -3.0625F, -4.0F, 5.0F, 6.0F, 8.0F, 0.02F, false);
-        this.leftthumbsection1 = new ModelRenderer(this);
-        this.leftthumbsection1.setPos(3.5447F, -1.0808F, -3.3107F);
-        this.lefthand.addChild(this.leftthumbsection1);
-        this.setRotationAngle(this.leftthumbsection1, 0.0F, 0.7854F, 0.0F);
-        this.leftthumbsection1.texOffs(99, 34).addBox(-1.5F, -1.5F, -1.625F, 3.0F, 3.0F, 2.0F, 0.3F, false);
-        this.leftthumbsection2 = new ModelRenderer(this);
-        this.leftthumbsection2.setPos(1.5815F, 0.0865F, -0.4592F);
-        this.leftthumbsection1.addChild(this.leftthumbsection2);
-        this.setRotationAngle(this.leftthumbsection2, 0.0F, -0.5672F, 0.0F);
-        this.leftthumbsection2.texOffs(99, 29).addBox(-0.5F, -1.0F, -1.0F, 3.0F, 2.0F, 2.0F, 0.2F, false);
-        this.leftthumbsection3 = new ModelRenderer(this);
-        this.leftthumbsection3.setPos(2.3746F, -0.0149F, -0.0947F);
-        this.leftthumbsection2.addChild(this.leftthumbsection3);
-        this.setRotationAngle(this.leftthumbsection3, 0.0F, -0.7854F, 0.0F);
-        this.leftthumbsection3.texOffs(100, 25).addBox(-0.5F, -1.0F, -0.5F, 3.0F, 2.0F, 1.0F, 0.1F, false);
-        this.leftthumbsection4 = new ModelRenderer(this);
-        this.leftthumbsection4.setPos(2.3437F, 0.0F, -0.0163F);
-        this.leftthumbsection3.addChild(this.leftthumbsection4);
-        this.leftthumbsection4.texOffs(101, 21).addBox(-0.25F, -0.5F, -0.5F, 2.0F, 1.0F, 1.0F, 0.0F, false);
-        this.leftpointfingersection1 = new ModelRenderer(this);
-        this.leftpointfingersection1.setPos(2.7115F, -3.288F, -2.8486F);
-        this.lefthand.addChild(this.leftpointfingersection1);
-        this.leftpointfingersection1.texOffs(86, 34).addBox(-2.0F, -2.75F, -1.0F, 4.0F, 3.0F, 2.0F, 0.02F, false);
-        this.leftpointfingersection2 = new ModelRenderer(this);
-        this.leftpointfingersection2.setPos(0.8083F, -2.7732F, 0.0013F);
-        this.leftpointfingersection1.addChild(this.leftpointfingersection2);
-        this.setRotationAngle(this.leftpointfingersection2, 0.0F, 0.0F, 0.1745F);
-        this.leftpointfingersection2.texOffs(88, 27).addBox(-1.0F, -2.25F, -1.0F, 2.0F, 4.0F, 2.0F, 0.01F, false);
-        this.leftpointfingersection3 = new ModelRenderer(this);
-        this.leftpointfingersection3.setPos(-0.0074F, -2.4571F, 0.0F);
-        this.leftpointfingersection2.addChild(this.leftpointfingersection3);
-        this.setRotationAngle(this.leftpointfingersection3, 0.0F, 0.0F, 1.4835F);
-        this.leftpointfingersection3.texOffs(88, 20).addBox(-1.0F, -3.5F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
-        this.leftpointfingersection4 = new ModelRenderer(this);
-        this.leftpointfingersection4.setPos(-0.3956F, -3.5959F, -0.0026F);
-        this.leftpointfingersection3.addChild(this.leftpointfingersection4);
-        this.leftpointfingersection4.texOffs(90, 15).addBox(-0.5F, -2.25F, -0.5F, 1.0F, 3.0F, 1.0F, 0.0F, false);
-        this.leftmiddlefingersection1 = new ModelRenderer(this);
-        this.leftmiddlefingersection1.setPos(2.7115F, -3.163F, -0.6611F);
-        this.lefthand.addChild(this.leftmiddlefingersection1);
-        this.setRotationAngle(this.leftmiddlefingersection1, -0.0873F, 0.0F, 0.0F);
-        this.leftmiddlefingersection1.texOffs(86, 34).addBox(-2.0F, -2.75F, -1.0F, 4.0F, 3.0F, 2.0F, 0.02F, false);
-        this.leftmiddlefingersection2 = new ModelRenderer(this);
-        this.leftmiddlefingersection2.setPos(0.8083F, -2.7732F, 0.0013F);
-        this.leftmiddlefingersection1.addChild(this.leftmiddlefingersection2);
-        this.setRotationAngle(this.leftmiddlefingersection2, 0.0F, 0.0F, 0.2618F);
-        this.leftmiddlefingersection2.texOffs(88, 27).addBox(-1.0F, -2.25F, -1.0F, 2.0F, 4.0F, 2.0F, 0.01F, false);
-        this.leftmiddlefingersection3 = new ModelRenderer(this);
-        this.leftmiddlefingersection3.setPos(-0.0074F, -2.4571F, 0.0F);
-        this.leftmiddlefingersection2.addChild(this.leftmiddlefingersection3);
-        this.setRotationAngle(this.leftmiddlefingersection3, 0.0F, 0.0F, 1.5708F);
-        this.leftmiddlefingersection3.texOffs(88, 20).addBox(-1.0F, -3.5F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
-        this.leftmiddlefingersection4 = new ModelRenderer(this);
-        this.leftmiddlefingersection4.setPos(-0.3956F, -3.5959F, -0.0026F);
-        this.leftmiddlefingersection3.addChild(this.leftmiddlefingersection4);
-        this.leftmiddlefingersection4.texOffs(90, 15).addBox(-0.5F, -2.25F, -0.5F, 1.0F, 3.0F, 1.0F, 0.0F, false);
-        this.leftringfingersection1 = new ModelRenderer(this);
-        this.leftringfingersection1.setPos(2.7115F, -2.9755F, 1.5264F);
-        this.lefthand.addChild(this.leftringfingersection1);
-        this.setRotationAngle(this.leftringfingersection1, -0.1745F, 0.0F, 0.0F);
-        this.leftringfingersection1.texOffs(86, 34).addBox(-2.0F, -2.75F, -1.0F, 4.0F, 3.0F, 2.0F, 0.02F, false);
-        this.leftringfingersection2 = new ModelRenderer(this);
-        this.leftringfingersection2.setPos(0.8083F, -2.7732F, 0.0013F);
-        this.leftringfingersection1.addChild(this.leftringfingersection2);
-        this.setRotationAngle(this.leftringfingersection2, 0.0F, 0.0F, 0.3491F);
-        this.leftringfingersection2.texOffs(88, 27).addBox(-1.0F, -2.25F, -1.0F, 2.0F, 4.0F, 2.0F, 0.01F, false);
-        this.leftringfingersection3 = new ModelRenderer(this);
-        this.leftringfingersection3.setPos(-0.0074F, -2.4571F, 0.0F);
-        this.leftringfingersection2.addChild(this.leftringfingersection3);
-        this.setRotationAngle(this.leftringfingersection3, 0.0F, 0.0F, 1.7453F);
-        this.leftringfingersection3.texOffs(88, 20).addBox(-1.0F, -3.5F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
-        this.leftringfingersection4 = new ModelRenderer(this);
-        this.leftringfingersection4.setPos(-0.3956F, -3.5959F, -0.0026F);
-        this.leftringfingersection3.addChild(this.leftringfingersection4);
-        this.leftringfingersection4.texOffs(90, 15).addBox(-0.5F, -2.25F, -0.5F, 1.0F, 3.0F, 1.0F, 0.0F, false);
-        this.leftpinkyfingersection1 = new ModelRenderer(this);
-        this.leftpinkyfingersection1.setPos(2.7115F, -2.3505F, 3.3389F);
-        this.lefthand.addChild(this.leftpinkyfingersection1);
-        this.setRotationAngle(this.leftpinkyfingersection1, -0.4276F, 0.0F, 0.0F);
-        this.leftpinkyfingersection1.texOffs(86, 34).addBox(-2.0F, -2.75F, -1.0F, 4.0F, 4.0F, 2.0F, 0.02F, false);
-        this.leftpinkyfingersection2 = new ModelRenderer(this);
-        this.leftpinkyfingersection2.setPos(0.8083F, -2.7732F, 0.0013F);
-        this.leftpinkyfingersection1.addChild(this.leftpinkyfingersection2);
-        this.setRotationAngle(this.leftpinkyfingersection2, 0.0F, 0.0F, 0.3491F);
-        this.leftpinkyfingersection2.texOffs(88, 27).addBox(-1.0F, -2.25F, -1.0F, 2.0F, 4.0F, 2.0F, 0.01F, false);
-        this.leftpinkyfingersection3 = new ModelRenderer(this);
-        this.leftpinkyfingersection3.setPos(-0.0074F, -2.4571F, 0.0F);
-        this.leftpinkyfingersection2.addChild(this.leftpinkyfingersection3);
-        this.setRotationAngle(this.leftpinkyfingersection3, 0.0F, 0.0F, 1.7453F);
-        this.leftpinkyfingersection3.texOffs(88, 20).addBox(-1.0F, -3.5F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
-        this.leftpinkyfingersection4 = new ModelRenderer(this);
-        this.leftpinkyfingersection4.setPos(-0.3956F, -3.5959F, -0.0026F);
-        this.leftpinkyfingersection3.addChild(this.leftpinkyfingersection4);
-        this.leftpinkyfingersection4.texOffs(90, 15).addBox(-0.5F, -2.25F, -0.5F, 1.0F, 3.0F, 1.0F, 0.0F, false);
-        this.rightarm = new ModelRenderer(this);
-        this.rightarm.setPos(-7.1387F, 2.2059F, 9.2223F);
-        this.bodysection1.addChild(this.rightarm);
-        this.setRotationAngle(this.rightarm, 0.0F, -0.3491F, -0.1745F);
-        this.rightarm.texOffs(2, 26).addBox(-2.5F, -2.5F, -3.5F, 5.0F, 5.0F, 7.0F, 0.6F, true);
-        this.upperrightarm = new ModelRenderer(this);
-        this.upperrightarm.setPos(-2.45F, 0.1245F, -0.0354F);
-        this.rightarm.addChild(this.upperrightarm);
-        this.setRotationAngle(this.upperrightarm, 0.0F, 0.0F, -0.3927F);
-        this.upperrightarm.texOffs(112, 26).addBox(-25.0625F, -2.5F, -3.5F, 26.0F, 5.0F, 7.0F, 0.02F, true);
-        this.lowerrightarm = new ModelRenderer(this);
-        this.lowerrightarm.setPos(-23.4475F, 0.4134F, 0.1053F);
-        this.upperrightarm.addChild(this.lowerrightarm);
-        this.setRotationAngle(this.lowerrightarm, 0.0F, -0.9599F, 0.0F);
-        this.lowerrightarm.texOffs(123, 1).addBox(-17.6069F, -2.4588F, -3.63F, 20.0F, 4.0F, 7.0F, 0.02F, true);
-        this.righthand = new ModelRenderer(this);
-        this.righthand.setPos(-16.4105F, -1.3282F, 0.0265F);
-        this.lowerrightarm.addChild(this.righthand);
-        this.righthand.texOffs(32, 10).addBox(-4.9375F, -3.0625F, -4.0F, 5.0F, 6.0F, 8.0F, 0.02F, true);
-        this.rightthumbsection1 = new ModelRenderer(this);
-        this.rightthumbsection1.setPos(-3.5447F, -1.0808F, -3.3107F);
-        this.righthand.addChild(this.rightthumbsection1);
-        this.setRotationAngle(this.rightthumbsection1, 0.0F, -0.7854F, 0.0F);
-        this.rightthumbsection1.texOffs(99, 34).addBox(-1.5F, -1.5F, -1.625F, 3.0F, 3.0F, 2.0F, 0.3F, true);
-        this.rightthumbsection = new ModelRenderer(this);
-        this.rightthumbsection.setPos(-1.5815F, 0.0865F, -0.4592F);
-        this.rightthumbsection1.addChild(this.rightthumbsection);
-        this.setRotationAngle(this.rightthumbsection, 0.0F, 0.5672F, 0.0F);
-        this.rightthumbsection.texOffs(99, 29).addBox(-2.5F, -1.0F, -1.0F, 3.0F, 2.0F, 2.0F, 0.2F, true);
-        this.rightthumbsection3 = new ModelRenderer(this);
-        this.rightthumbsection3.setPos(-2.3746F, -0.0149F, -0.0947F);
-        this.rightthumbsection.addChild(this.rightthumbsection3);
-        this.setRotationAngle(this.rightthumbsection3, 0.0F, 0.7854F, 0.0F);
-        this.rightthumbsection3.texOffs(100, 25).addBox(-2.5F, -1.0F, -0.5F, 3.0F, 2.0F, 1.0F, 0.1F, true);
-        this.rightthumbsection4 = new ModelRenderer(this);
-        this.rightthumbsection4.setPos(-2.3437F, 0.0F, -0.0163F);
-        this.rightthumbsection3.addChild(this.rightthumbsection4);
-        this.rightthumbsection4.texOffs(101, 21).addBox(-1.75F, -0.5F, -0.5F, 2.0F, 1.0F, 1.0F, 0.0F, true);
-        this.rightpointfingersection1 = new ModelRenderer(this);
-        this.rightpointfingersection1.setPos(-2.7115F, -3.288F, -2.8486F);
-        this.righthand.addChild(this.rightpointfingersection1);
-        this.rightpointfingersection1.texOffs(86, 34).addBox(-2.0F, -2.75F, -1.0F, 4.0F, 3.0F, 2.0F, 0.02F, true);
-        this.rightpointfingersection2 = new ModelRenderer(this);
-        this.rightpointfingersection2.setPos(-0.8083F, -2.7732F, 0.0013F);
-        this.rightpointfingersection1.addChild(this.rightpointfingersection2);
-        this.setRotationAngle(this.rightpointfingersection2, 0.0F, 0.0F, -0.1745F);
-        this.rightpointfingersection2.texOffs(88, 27).addBox(-1.0F, -2.25F, -1.0F, 2.0F, 4.0F, 2.0F, 0.01F, true);
-        this.rightpointfingersection3 = new ModelRenderer(this);
-        this.rightpointfingersection3.setPos(0.0074F, -2.4571F, 0.0F);
-        this.rightpointfingersection2.addChild(this.rightpointfingersection3);
-        this.setRotationAngle(this.rightpointfingersection3, 0.0F, 0.0F, -1.4835F);
-        this.rightpointfingersection3.texOffs(88, 20).addBox(-1.0F, -3.5F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, true);
-        this.rightpointfingersection4 = new ModelRenderer(this);
-        this.rightpointfingersection4.setPos(0.3956F, -3.5959F, -0.0026F);
-        this.rightpointfingersection3.addChild(this.rightpointfingersection4);
-        this.rightpointfingersection4.texOffs(90, 15).addBox(-0.5F, -2.25F, -0.5F, 1.0F, 3.0F, 1.0F, 0.0F, true);
-        this.rightmiddlefingersection1 = new ModelRenderer(this);
-        this.rightmiddlefingersection1.setPos(-2.7115F, -3.163F, -0.6611F);
-        this.righthand.addChild(this.rightmiddlefingersection1);
-        this.setRotationAngle(this.rightmiddlefingersection1, -0.0873F, 0.0F, 0.0F);
-        this.rightmiddlefingersection1.texOffs(86, 34).addBox(-2.0F, -2.75F, -1.0F, 4.0F, 3.0F, 2.0F, 0.02F, true);
-        this.rightmiddlefingersection2 = new ModelRenderer(this);
-        this.rightmiddlefingersection2.setPos(-0.8083F, -2.7732F, 0.0013F);
-        this.rightmiddlefingersection1.addChild(this.rightmiddlefingersection2);
-        this.setRotationAngle(this.rightmiddlefingersection2, 0.0F, 0.0F, -0.2618F);
-        this.rightmiddlefingersection2.texOffs(88, 27).addBox(-1.0F, -2.25F, -1.0F, 2.0F, 4.0F, 2.0F, 0.01F, true);
-        this.rightmiddlefingersection3 = new ModelRenderer(this);
-        this.rightmiddlefingersection3.setPos(0.0074F, -2.4571F, 0.0F);
-        this.rightmiddlefingersection2.addChild(this.rightmiddlefingersection3);
-        this.setRotationAngle(this.rightmiddlefingersection3, 0.0F, 0.0F, -1.5708F);
-        this.rightmiddlefingersection3.texOffs(88, 20).addBox(-1.0F, -3.5F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, true);
-        this.rightmiddlefingersection4 = new ModelRenderer(this);
-        this.rightmiddlefingersection4.setPos(0.3956F, -3.5959F, -0.0026F);
-        this.rightmiddlefingersection3.addChild(this.rightmiddlefingersection4);
-        this.rightmiddlefingersection4.texOffs(90, 15).addBox(-0.5F, -2.25F, -0.5F, 1.0F, 3.0F, 1.0F, 0.0F, true);
-        this.rightringfingersection1 = new ModelRenderer(this);
-        this.rightringfingersection1.setPos(-2.7115F, -2.9755F, 1.5264F);
-        this.righthand.addChild(this.rightringfingersection1);
-        this.setRotationAngle(this.rightringfingersection1, -0.1745F, 0.0F, 0.0F);
-        this.rightringfingersection1.texOffs(86, 34).addBox(-2.0F, -2.75F, -1.0F, 4.0F, 3.0F, 2.0F, 0.02F, true);
-        this.rightringfingersection2 = new ModelRenderer(this);
-        this.rightringfingersection2.setPos(-0.8083F, -2.7732F, 0.0013F);
-        this.rightringfingersection1.addChild(this.rightringfingersection2);
-        this.setRotationAngle(this.rightringfingersection2, 0.0F, 0.0F, -0.3491F);
-        this.rightringfingersection2.texOffs(88, 27).addBox(-1.0F, -2.25F, -1.0F, 2.0F, 4.0F, 2.0F, 0.01F, true);
-        this.rightringfingersection3 = new ModelRenderer(this);
-        this.rightringfingersection3.setPos(0.0074F, -2.4571F, 0.0F);
-        this.rightringfingersection2.addChild(this.rightringfingersection3);
-        this.setRotationAngle(this.rightringfingersection3, 0.0F, 0.0F, -1.7453F);
-        this.rightringfingersection3.texOffs(88, 20).addBox(-1.0F, -3.5F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, true);
-        this.rightringfingersection4 = new ModelRenderer(this);
-        this.rightringfingersection4.setPos(0.3956F, -3.5959F, -0.0026F);
-        this.rightringfingersection3.addChild(this.rightringfingersection4);
-        this.rightringfingersection4.texOffs(90, 15).addBox(-0.5F, -2.25F, -0.5F, 1.0F, 3.0F, 1.0F, 0.0F, true);
-        this.rightpinkyfingersection1 = new ModelRenderer(this);
-        this.rightpinkyfingersection1.setPos(-2.7115F, -2.3505F, 3.3389F);
-        this.righthand.addChild(this.rightpinkyfingersection1);
-        this.setRotationAngle(this.rightpinkyfingersection1, -0.4276F, 0.0F, 0.0F);
-        this.rightpinkyfingersection1.texOffs(86, 34).addBox(-2.0F, -2.75F, -1.0F, 4.0F, 4.0F, 2.0F, 0.02F, true);
-        this.rightpinkyfingersection2 = new ModelRenderer(this);
-        this.rightpinkyfingersection2.setPos(-0.8083F, -2.7732F, 0.0013F);
-        this.rightpinkyfingersection1.addChild(this.rightpinkyfingersection2);
-        this.setRotationAngle(this.rightpinkyfingersection2, 0.0F, 0.0F, -0.3491F);
-        this.rightpinkyfingersection2.texOffs(88, 27).addBox(-1.0F, -2.25F, -1.0F, 2.0F, 4.0F, 2.0F, 0.01F, true);
-        this.rightpinkyfingersection3 = new ModelRenderer(this);
-        this.rightpinkyfingersection3.setPos(0.0074F, -2.4571F, 0.0F);
-        this.rightpinkyfingersection2.addChild(this.rightpinkyfingersection3);
-        this.setRotationAngle(this.rightpinkyfingersection3, 0.0F, 0.0F, -1.7453F);
-        this.rightpinkyfingersection3.texOffs(88, 20).addBox(-1.0F, -3.5F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, true);
-        this.rightpinkyfingersection4 = new ModelRenderer(this);
-        this.rightpinkyfingersection4.setPos(0.3956F, -3.5959F, -0.0026F);
-        this.rightpinkyfingersection3.addChild(this.rightpinkyfingersection4);
-        this.rightpinkyfingersection4.texOffs(90, 15).addBox(-0.5F, -2.25F, -0.5F, 1.0F, 3.0F, 1.0F, 0.0F, true);
-        this.bodysection2 = new ModelRenderer(this);
-        this.bodysection2.setPos(-0.1057F, -0.1333F, 16.088F);
-        this.bodysection1.addChild(this.bodysection2);
-        this.bodysection2.texOffs(341, 46).addBox(0.049F, -19.7225F, 0.2315F, 0.0F, 15.0F, 26.0F, 0.0F, false);
-        this.bodysection2.texOffs(141, 419).addBox(-7.549F, -5.2775F, 0.206F, 15.0F, 11.0F, 27.0F, 0.0F, false);
-        this.bodysection3 = new ModelRenderer(this);
-        this.bodysection3.setPos(0.0197F, 0.29F, 26.319F);
-        this.bodysection2.addChild(this.bodysection3);
-        this.setRotationAngle(this.bodysection3, 0.0F, 0.0F, 0.0F);
-        this.bodysection3.texOffs(338, 40).addBox(0.0293F, -23.1875F, -0.125F, 0.0F, 17.0F, 40.0F, 0.0F, false);
-        this.bodysection3.texOffs(127, 458).addBox(-8.0293F, -6.1875F, -0.125F, 16.0F, 13.0F, 40.0F, 0.0F, false);
-        this.bodysection4 = new ModelRenderer(this);
-        this.bodysection4.setPos(0.5F, -0.25F, 39.75F);
-        this.bodysection3.addChild(this.bodysection4);
-        this.setRotationAngle(this.bodysection4, 0.0F, 0.0F, 0.0F);
-        this.bodysection4.texOffs(338, 40).addBox(-0.4707F, -21.6875F, 0.125F, 0.0F, 16.0F, 40.0F, 0.0F, false);
-        this.bodysection4.texOffs(127, 458).addBox(-8.0293F, -5.6875F, 0.125F, 15.0F, 12.0F, 40.0F, 0.0F, false);
-        this.bodysection5 = new ModelRenderer(this);
-        this.bodysection5.setPos(0.0F, 0.5F, 40.0F);
-        this.bodysection4.addChild(this.bodysection5);
-        this.setRotationAngle(this.bodysection5, 0.0F, 0.0F, 0.0F);
-        this.bodysection5.texOffs(338, 40).addBox(-0.4707F, -22.1875F, 0.125F, 0.0F, 16.0F, 40.0F, 0.0F, false);
-        this.bodysection5.texOffs(127, 458).addBox(-8.0293F, -6.1875F, 0.125F, 15.0F, 12.0F, 40.0F, 0.0F, false);
-        this.bodysection6 = new ModelRenderer(this);
-        this.bodysection6.setPos(-0.5F, -0.75F, 40.0F);
-        this.bodysection5.addChild(this.bodysection6);
-        this.setRotationAngle(this.bodysection6, 0.0F, 0.0F, 0.0F);
-        this.bodysection6.texOffs(338, 40).addBox(0.0293F, -20.1875F, 0.125F, 0.0F, 15.0F, 40.0F, 0.0F, false);
-        this.bodysection6.texOffs(127, 458).addBox(-7.0293F, -5.1875F, 0.125F, 14.0F, 11.0F, 40.0F, 0.0F, false);
-        this.bodysection7 = new ModelRenderer(this);
-        this.bodysection7.setPos(0.0F, 0.25F, 40.25F);
-        this.bodysection6.addChild(this.bodysection7);
-        this.setRotationAngle(this.bodysection7, 0.0F, 0.0F, 0.0F);
-        this.bodysection7.texOffs(338, 40).addBox(0.0293F, -20.4375F, -0.125F, 0.0F, 15.0F, 40.0F, 0.0F, false);
-        this.bodysection7.texOffs(127, 458).addBox(-7.0293F, -5.4375F, -0.125F, 14.0F, 11.0F, 40.0F, 0.0F, false);
-        this.bodysection8 = new ModelRenderer(this);
-        this.bodysection8.setPos(0.0F, 0.5F, 39.75F);
-        this.bodysection7.addChild(this.bodysection8);
-        this.setRotationAngle(this.bodysection8, 0.0F, 0.0F, 0.0F);
-        this.bodysection8.texOffs(338, 40).addBox(0.0293F, -20.9375F, 0.125F, 0.0F, 15.0F, 40.0F, 0.0F, false);
-        this.bodysection8.texOffs(127, 458).addBox(-7.0293F, -5.9375F, 0.125F, 14.0F, 11.0F, 40.0F, 0.0F, false);
-        this.bodysection9 = new ModelRenderer(this);
-        this.bodysection9.setPos(0.0F, 0.0F, 40.25F);
-        this.bodysection8.addChild(this.bodysection9);
-        this.setRotationAngle(this.bodysection9, 0.0F, 0.0F, 0.0F);
-        this.bodysection9.texOffs(338, 40).addBox(0.0293F, -19.9375F, -0.125F, 0.0F, 15.0F, 40.0F, 0.0F, false);
-        this.bodysection9.texOffs(127, 458).addBox(-6.5293F, -5.4375F, -0.125F, 13.0F, 10.0F, 40.0F, 0.0F, false);
-        this.bodysection10 = new ModelRenderer(this);
-        this.bodysection10.setPos(0.0F, -0.25F, 39.75F);
-        this.bodysection9.addChild(this.bodysection10);
-        this.setRotationAngle(this.bodysection10, 0.0F, 0.0F, 0.0F);
-        this.bodysection10.texOffs(338, 40).addBox(0.0293F, -18.6875F, 0.125F, 0.0F, 14.0F, 40.0F, 0.0F, false);
-        this.bodysection10.texOffs(127, 458).addBox(-6.0293F, -4.6875F, 0.125F, 12.0F, 9.0F, 40.0F, 0.0F, false);
-        this.bodysection11 = new ModelRenderer(this);
-        this.bodysection11.setPos(0.0F, 0.0F, 40.0F);
-        this.bodysection10.addChild(this.bodysection11);
-        this.setRotationAngle(this.bodysection11, 0.0F, 0.0F, 0.0F);
-        this.bodysection11.texOffs(338, 40).addBox(0.0293F, -17.6875F, 0.125F, 0.0F, 14.0F, 40.0F, 0.0F, false);
-        this.bodysection11.texOffs(127, 458).addBox(-5.5293F, -4.1875F, 0.125F, 11.0F, 8.0F, 40.0F, 0.0F, false);
-        this.tail1 = new ModelRenderer(this);
-        this.tail1.setPos(0.0293F, -0.3934F, 39.7012F);
-        this.bodysection11.addChild(this.tail1);
-        this.tail1.texOffs(338, -54).addBox(0.0F, -22.625F, -0.25F, 0.0F, 36.0F, 55.0F, 0.0F, false);
+        texWidth = 512;
+        texHeight = 512;
+
+        necksection1 = new ModelRenderer(this);
+        necksection1.setPos(-0.1666F, 19.3429F, 0.901F);
+
+
+        bodysection1 = new ModelRenderer(this);
+        bodysection1.setPos(-0.2334F, 7.6571F, 49.099F);
+        necksection1.addChild(bodysection1);
+        bodysection1.texOffs(150, 372).addBox(-9.2655F, -10.6368F, -2.235F, 19.0F, 20.0F, 20.0F, 0.0F, false);
+        bodysection1.texOffs(422, 57).addBox(-0.2655F, -23.6368F, -2.235F, 0.0F, 13.0F, 20.0F, 0.0F, false);
+
+        bodysection2 = new ModelRenderer(this);
+        bodysection2.setPos(-0.2334F, 0F, 19F);
+        bodysection1.addChild(bodysection2);
+        bodysection2.texOffs(336, 222).addBox(-10.2655F, -11.6368F, -1.235F, 21.0F, 22.0F, 20.0F, 0.0F, false);
+        bodysection2.texOffs(418, 216).addBox(0.2345F, -26.6368F, -1.235F, 0.0F, 15.0F, 20.0F, 0.0F, false);
+
+        bodysection3 = new ModelRenderer(this);
+        bodysection3.setPos(-0.2334F, 0F, 18F);
+        bodysection2.addChild(bodysection3);
+        bodysection3.texOffs(240, 114).addBox(-11.2655F, -12.6368F, -0.235F, 23.0F, 24.0F, 27.0F, 0.0F, false);
+        bodysection3.texOffs(416, 163).addBox(0.3325F, -27.0818F, -0.2095F, 0.0F, 15.0F, 26.0F, 0.0F, false);
+
+        leftarm2 = new ModelRenderer(this);
+        leftarm2.setPos(14.5495F, -5.0201F, 11.6933F);
+        bodysection3.addChild(leftarm2);
+        leftarm2.texOffs(216, 252).addBox(-2.5F, -2.5F, -3.5F, 5.0F, 5.0F, 7.0F, 0.6F, false);
+
+        upperleftarm2 = new ModelRenderer(this);
+        upperleftarm2.setPos(-4.55F, 0.1245F, -83.0354F);
+        leftarm2.addChild(upperleftarm2);
+        upperleftarm2.texOffs(392, 305).addBox(6.0625F, -2.5F, 79.5F, 26.0F, 5.0F, 7.0F, 0.02F, false);
+
+        lowerleftarm2 = new ModelRenderer(this);
+        lowerleftarm2.setPos(23.4475F, 0.4134F, 0.1053F);
+        upperleftarm2.addChild(lowerleftarm2);
+        lowerleftarm2.texOffs(418, 251).addBox(4.6069F, -2.4588F, 79.37F, 20.0F, 4.0F, 7.0F, 0.02F, false);
+
+        lefthand2 = new ModelRenderer(this);
+        lefthand2.setPos(16.4105F, -1.3282F, 0.0265F);
+        lowerleftarm2.addChild(lefthand2);
+        lefthand2.texOffs(94, 281).addBox(6.9375F, -3.0625F, 79.0F, 5.0F, 6.0F, 8.0F, 0.02F, false);
+
+        leftthumbsection8 = new ModelRenderer(this);
+        leftthumbsection8.setPos(3.5447F, -1.0808F, -3.3107F);
+        lefthand2.addChild(leftthumbsection8);
+        leftthumbsection8.texOffs(110, 63).addBox(5.5F, -1.5F, 81.375F, 3.0F, 3.0F, 2.0F, 0.3F, false);
+
+        leftthumbsection7 = new ModelRenderer(this);
+        leftthumbsection7.setPos(1.5815F, 0.0865F, -0.4592F);
+        leftthumbsection8.addChild(leftthumbsection7);
+        leftthumbsection7.texOffs(80, 341).addBox(6.5F, -1.0F, 82.0F, 3.0F, 2.0F, 2.0F, 0.2F, false);
+
+        leftthumbsection6 = new ModelRenderer(this);
+        leftthumbsection6.setPos(2.3746F, -0.0149F, -0.0947F);
+        leftthumbsection7.addChild(leftthumbsection6);
+        leftthumbsection6.texOffs(230, 60).addBox(6.5F, -1.0F, 82.5F, 3.0F, 2.0F, 1.0F, 0.1F, false);
+
+        leftthumbsection5 = new ModelRenderer(this);
+        leftthumbsection5.setPos(2.3437F, 0.0F, -0.0163F);
+        leftthumbsection6.addChild(leftthumbsection5);
+        leftthumbsection5.texOffs(264, 320).addBox(6.75F, -0.5F, 82.5F, 2.0F, 1.0F, 1.0F, 0.0F, false);
+
+        leftpointfingersection8 = new ModelRenderer(this);
+        leftpointfingersection8.setPos(2.7115F, -3.288F, -2.8486F);
+        lefthand2.addChild(leftpointfingersection8);
+        leftpointfingersection8.texOffs(264, 315).addBox(5.0F, -2.75F, 82.0F, 4.0F, 3.0F, 2.0F, 0.02F, false);
+
+        leftpointfingersection7 = new ModelRenderer(this);
+        leftpointfingersection7.setPos(0.8083F, -2.7732F, 0.0013F);
+        leftpointfingersection8.addChild(leftpointfingersection7);
+        leftpointfingersection7.texOffs(110, 73).addBox(6.0F, -2.25F, 82.0F, 2.0F, 4.0F, 2.0F, 0.01F, false);
+
+        leftpointfingersection6 = new ModelRenderer(this);
+        leftpointfingersection6.setPos(-0.0074F, -2.4571F, 0.0F);
+        leftpointfingersection7.addChild(leftpointfingersection6);
+        leftpointfingersection6.texOffs(208, 308).addBox(6.0F, -3.5F, 82.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
+
+        leftpointfingersection5 = new ModelRenderer(this);
+        leftpointfingersection5.setPos(-0.3956F, -3.5959F, -0.0026F);
+        leftpointfingersection6.addChild(leftpointfingersection5);
+        leftpointfingersection5.texOffs(90, 341).addBox(6.5F, -2.25F, 82.5F, 1.0F, 3.0F, 1.0F, 0.0F, false);
+
+        leftmiddlefingersection8 = new ModelRenderer(this);
+        leftmiddlefingersection8.setPos(2.7115F, -3.163F, -0.6611F);
+        lefthand2.addChild(leftmiddlefingersection8);
+        leftmiddlefingersection8.texOffs(276, 315).addBox(5.0F, -2.75F, 82.0F, 4.0F, 3.0F, 2.0F, 0.02F, false);
+
+        leftmiddlefingersection7 = new ModelRenderer(this);
+        leftmiddlefingersection7.setPos(0.8083F, -2.7732F, 0.0013F);
+        leftmiddlefingersection8.addChild(leftmiddlefingersection7);
+        leftmiddlefingersection7.texOffs(110, 79).addBox(6.0F, -2.25F, 82.0F, 2.0F, 4.0F, 2.0F, 0.01F, false);
+
+        leftmiddlefingersection6 = new ModelRenderer(this);
+        leftmiddlefingersection6.setPos(-0.0074F, -2.4571F, 0.0F);
+        leftmiddlefingersection7.addChild(leftmiddlefingersection6);
+        leftmiddlefingersection6.texOffs(176, 350).addBox(6.0F, -3.5F, 82.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
+
+        leftmiddlefingersection5 = new ModelRenderer(this);
+        leftmiddlefingersection5.setPos(-0.3956F, -3.5959F, -0.0026F);
+        leftmiddlefingersection6.addChild(leftmiddlefingersection5);
+        leftmiddlefingersection5.texOffs(90, 345).addBox(6.5F, -2.25F, 82.5F, 1.0F, 3.0F, 1.0F, 0.0F, false);
+
+        leftringfingersection8 = new ModelRenderer(this);
+        leftringfingersection8.setPos(2.7115F, -2.9755F, 1.5264F);
+        lefthand2.addChild(leftringfingersection8);
+        leftringfingersection8.texOffs(288, 315).addBox(5.0F, -2.75F, 82.0F, 4.0F, 3.0F, 2.0F, 0.02F, false);
+
+        leftringfingersection7 = new ModelRenderer(this);
+        leftringfingersection7.setPos(0.8083F, -2.7732F, 0.0013F);
+        leftringfingersection8.addChild(leftringfingersection7);
+        leftringfingersection7.texOffs(110, 85).addBox(6.0F, -2.25F, 82.0F, 2.0F, 4.0F, 2.0F, 0.01F, false);
+
+        leftringfingersection6 = new ModelRenderer(this);
+        leftringfingersection6.setPos(-0.0074F, -2.4571F, 0.0F);
+        leftringfingersection7.addChild(leftringfingersection6);
+        leftringfingersection6.texOffs(176, 356).addBox(6.0F, -3.5F, 82.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
+
+        leftringfingersection5 = new ModelRenderer(this);
+        leftringfingersection5.setPos(-0.3956F, -3.5959F, -0.0026F);
+        leftringfingersection6.addChild(leftringfingersection5);
+        leftringfingersection5.texOffs(174, 368).addBox(6.5F, -2.25F, 82.5F, 1.0F, 3.0F, 1.0F, 0.0F, false);
+
+        leftpinkyfingersection8 = new ModelRenderer(this);
+        leftpinkyfingersection8.setPos(2.7115F, -2.3505F, 3.3389F);
+        lefthand2.addChild(leftpinkyfingersection8);
+        leftpinkyfingersection8.texOffs(94, 295).addBox(5.0F, -2.75F, 82.0F, 4.0F, 4.0F, 2.0F, 0.02F, false);
+
+        leftpinkyfingersection7 = new ModelRenderer(this);
+        leftpinkyfingersection7.setPos(0.8083F, -2.7732F, 0.0013F);
+        leftpinkyfingersection8.addChild(leftpinkyfingersection7);
+        leftpinkyfingersection7.texOffs(208, 302).addBox(6.0F, -2.25F, 82.0F, 2.0F, 4.0F, 2.0F, 0.01F, false);
+
+        leftpinkyfingersection6 = new ModelRenderer(this);
+        leftpinkyfingersection6.setPos(-0.0074F, -2.4571F, 0.0F);
+        leftpinkyfingersection7.addChild(leftpinkyfingersection6);
+        leftpinkyfingersection6.texOffs(176, 362).addBox(6.0F, -3.5F, 82.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
+
+        leftpinkyfingersection5 = new ModelRenderer(this);
+        leftpinkyfingersection5.setPos(-0.3956F, -3.5959F, -0.0026F);
+        leftpinkyfingersection6.addChild(leftpinkyfingersection5);
+        leftpinkyfingersection5.texOffs(178, 368).addBox(6.5F, -2.25F, 82.5F, 1.0F, 3.0F, 1.0F, 0.0F, false);
+
+        rightarm2 = new ModelRenderer(this);
+        rightarm2.setPos(-14.7495F, -5.0201F, 11.6933F);
+        bodysection3.addChild(rightarm2);
+        rightarm2.texOffs(184, 302).addBox(-2.5F, -2.5F, -3.5F, 5.0F, 5.0F, 7.0F, 0.6F, false);
+
+        upperrightarm2 = new ModelRenderer(this);
+        upperrightarm2.setPos(5.55F, 0.1245F, -83.0354F);
+        rightarm2.addChild(upperrightarm2);
+        upperrightarm2.texOffs(416, 204).addBox(-33.0625F, -2.5F, 79.5F, 26.0F, 5.0F, 7.0F, 0.02F, false);
+
+        lowerrightarm2 = new ModelRenderer(this);
+        lowerrightarm2.setPos(-23.4475F, 0.4134F, 0.1053F);
+        upperrightarm2.addChild(lowerrightarm2);
+        lowerrightarm2.texOffs(422, 90).addBox(-25.6069F, -2.4588F, 79.37F, 20.0F, 4.0F, 7.0F, 0.02F, false);
+
+        righthand2 = new ModelRenderer(this);
+        righthand2.setPos(-16.4105F, -1.3282F, 0.0265F);
+        lowerrightarm2.addChild(righthand2);
+        righthand2.texOffs(150, 350).addBox(-12.9375F, -3.0625F, 79.0F, 5.0F, 6.0F, 8.0F, 0.02F, false);
+
+        rightthumbsection7 = new ModelRenderer(this);
+        rightthumbsection7.setPos(-3.5447F, -1.0808F, -3.3107F);
+        righthand2.addChild(rightthumbsection7);
+        rightthumbsection7.texOffs(110, 68).addBox(-9.5F, -1.5F, 81.375F, 3.0F, 3.0F, 2.0F, 0.3F, false);
+
+        rightthumbsection6 = new ModelRenderer(this);
+        rightthumbsection6.setPos(-1.5815F, 0.0865F, -0.4592F);
+        rightthumbsection7.addChild(rightthumbsection6);
+        rightthumbsection6.texOffs(80, 345).addBox(-10.5F, -1.0F, 82.0F, 3.0F, 2.0F, 2.0F, 0.2F, false);
+
+        rightthumbsection5 = new ModelRenderer(this);
+        rightthumbsection5.setPos(-2.3746F, -0.0149F, -0.0947F);
+        rightthumbsection6.addChild(rightthumbsection5);
+        rightthumbsection5.texOffs(344, 57).addBox(-10.5F, -1.0F, 82.5F, 3.0F, 2.0F, 1.0F, 0.1F, false);
+
+        rightthumbsection2 = new ModelRenderer(this);
+        rightthumbsection2.setPos(-2.3437F, 0.0F, -0.0163F);
+        rightthumbsection5.addChild(rightthumbsection2);
+        rightthumbsection2.texOffs(270, 320).addBox(-9.75F, -0.5F, 82.5F, 2.0F, 1.0F, 1.0F, 0.0F, false);
+
+        rightpointfingersection8 = new ModelRenderer(this);
+        rightpointfingersection8.setPos(-2.7115F, -3.288F, -2.8486F);
+        righthand2.addChild(rightpointfingersection8);
+        rightpointfingersection8.texOffs(300, 315).addBox(-10.0F, -2.75F, 82.0F, 4.0F, 3.0F, 2.0F, 0.02F, false);
+
+        rightpointfingersection7 = new ModelRenderer(this);
+        rightpointfingersection7.setPos(-0.8083F, -2.7732F, 0.0013F);
+        rightpointfingersection8.addChild(rightpointfingersection7);
+        rightpointfingersection7.texOffs(150, 364).addBox(-9.0F, -2.25F, 82.0F, 2.0F, 4.0F, 2.0F, 0.01F, false);
+
+        rightpointfingersection6 = new ModelRenderer(this);
+        rightpointfingersection6.setPos(0.0074F, -2.4571F, 0.0F);
+        rightpointfingersection7.addChild(rightpointfingersection6);
+        rightpointfingersection6.texOffs(158, 364).addBox(-9.0F, -3.5F, 82.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
+
+        rightpointfingersection5 = new ModelRenderer(this);
+        rightpointfingersection5.setPos(0.3956F, -3.5959F, -0.0026F);
+        rightpointfingersection6.addChild(rightpointfingersection5);
+        rightpointfingersection5.texOffs(260, 372).addBox(-8.5F, -2.25F, 82.5F, 1.0F, 3.0F, 1.0F, 0.0F, false);
+
+        rightmiddlefingersection8 = new ModelRenderer(this);
+        rightmiddlefingersection8.setPos(-2.7115F, -3.163F, -0.6611F);
+        righthand2.addChild(rightmiddlefingersection8);
+        rightmiddlefingersection8.texOffs(80, 331).addBox(-10.0F, -2.75F, 82.0F, 4.0F, 3.0F, 2.0F, 0.02F, false);
+
+        rightmiddlefingersection7 = new ModelRenderer(this);
+        rightmiddlefingersection7.setPos(-0.8083F, -2.7732F, 0.0013F);
+        rightmiddlefingersection8.addChild(rightmiddlefingersection7);
+        rightmiddlefingersection7.texOffs(166, 364).addBox(-9.0F, -2.25F, 82.0F, 2.0F, 4.0F, 2.0F, 0.01F, false);
+
+        rightmiddlefingersection6 = new ModelRenderer(this);
+        rightmiddlefingersection6.setPos(0.0074F, -2.4571F, 0.0F);
+        rightmiddlefingersection7.addChild(rightmiddlefingersection6);
+        rightmiddlefingersection6.texOffs(228, 372).addBox(-9.0F, -3.5F, 82.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
+
+        rightmiddlefingersection5 = new ModelRenderer(this);
+        rightmiddlefingersection5.setPos(0.3956F, -3.5959F, -0.0026F);
+        rightmiddlefingersection6.addChild(rightmiddlefingersection5);
+        rightmiddlefingersection5.texOffs(302, 379).addBox(-8.5F, -2.25F, 82.5F, 1.0F, 3.0F, 1.0F, 0.0F, false);
+
+        rightringfingersection8 = new ModelRenderer(this);
+        rightringfingersection8.setPos(-2.7115F, -2.9755F, 1.5264F);
+        righthand2.addChild(rightringfingersection8);
+        rightringfingersection8.texOffs(80, 336).addBox(-10.0F, -2.75F, 82.0F, 4.0F, 3.0F, 2.0F, 0.02F, false);
+
+        rightringfingersection7 = new ModelRenderer(this);
+        rightringfingersection7.setPos(-0.8083F, -2.7732F, 0.0013F);
+        rightringfingersection8.addChild(rightringfingersection7);
+        rightringfingersection7.texOffs(236, 372).addBox(-9.0F, -2.25F, 82.0F, 2.0F, 4.0F, 2.0F, 0.01F, false);
+
+        rightringfingersection6 = new ModelRenderer(this);
+        rightringfingersection6.setPos(0.0074F, -2.4571F, 0.0F);
+        rightringfingersection7.addChild(rightringfingersection6);
+        rightringfingersection6.texOffs(244, 372).addBox(-9.0F, -3.5F, 82.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
+
+        rightringfingersection5 = new ModelRenderer(this);
+        rightringfingersection5.setPos(0.3956F, -3.5959F, -0.0026F);
+        rightringfingersection6.addChild(rightringfingersection5);
+        rightringfingersection5.texOffs(306, 379).addBox(-8.5F, -2.25F, 82.5F, 1.0F, 3.0F, 1.0F, 0.0F, false);
+
+        rightpinkyfingersection8 = new ModelRenderer(this);
+        rightpinkyfingersection8.setPos(-2.7115F, -2.3505F, 3.3389F);
+        righthand2.addChild(rightpinkyfingersection8);
+        rightpinkyfingersection8.texOffs(106, 295).addBox(-10.0F, -2.75F, 82.0F, 4.0F, 4.0F, 2.0F, 0.02F, false);
+
+        rightpinkyfingersection7 = new ModelRenderer(this);
+        rightpinkyfingersection7.setPos(-0.8083F, -2.7732F, 0.0013F);
+        rightpinkyfingersection8.addChild(rightpinkyfingersection7);
+        rightpinkyfingersection7.texOffs(252, 372).addBox(-9.0F, -2.25F, 82.0F, 2.0F, 4.0F, 2.0F, 0.01F, false);
+
+        rightpinkyfingersection6 = new ModelRenderer(this);
+        rightpinkyfingersection6.setPos(0.0074F, -2.4571F, 0.0F);
+        rightpinkyfingersection7.addChild(rightpinkyfingersection6);
+        rightpinkyfingersection6.texOffs(294, 379).addBox(-9.0F, -3.5F, 82.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
+
+        rightpinkyfingersection5 = new ModelRenderer(this);
+        rightpinkyfingersection5.setPos(0.3956F, -3.5959F, -0.0026F);
+        rightpinkyfingersection6.addChild(rightpinkyfingersection5);
+        rightpinkyfingersection5.texOffs(310, 379).addBox(-8.5F, -2.25F, 82.5F, 1.0F, 3.0F, 1.0F, 0.0F, false);
+
+        bodysection4 = new ModelRenderer(this);
+        bodysection4.setPos(-0.2334F, 0, 26F);
+        bodysection3.addChild(bodysection4);
+        bodysection4.texOffs(0, 218).addBox(-9.7261F, -10.2568F, -0.247F, 20.0F, 23.0F, 40.0F, 0.0F, false);
+        bodysection4.texOffs(344, 0).addBox(0.3325F, -27.2568F, -0.247F, 0.0F, 17.0F, 40.0F, 0.0F, false);
+
+        bodysection5 = new ModelRenderer(this);
+        bodysection5.setPos(-0.2334F, 0, 39F);
+        bodysection4.addChild(bodysection5);
+        bodysection5.texOffs(240, 215).addBox(-9.7261F, -11.2568F, -0.247F, 20.0F, 22.0F, 28.0F, 0.0F, false);
+        bodysection5.texOffs(294, 408).addBox(0.3325F, -28.2568F, -0.247F, 0.0F, 17.0F, 28.0F, 0.0F, false);
+
+        bodysection6 = new ModelRenderer(this);
+        bodysection6.setPos(-0.2334F, 0, 26F);
+        bodysection5.addChild(bodysection6);
+        bodysection6.texOffs(120, 63).addBox(-9.7261F, -11.2568F, 0.753F, 20.0F, 23.0F, 40.0F, 0.0F, false);
+        bodysection6.texOffs(264, 322).addBox(0.3325F, -28.2568F, 0.753F, 0.0F, 17.0F, 40.0F, 0.0F, false);
+
+
+        bodysection8 = new ModelRenderer(this);
+        bodysection8.setPos(0.1666F, 0F, 30F);
+        bodysection6.addChild(bodysection8);
+        bodysection8.texOffs(240, 165).addBox(-10.1261F, -10.2568F, 47.753F, 20.0F, 22.0F, 28.0F, 0.0F, false);
+        bodysection8.texOffs(66, 399).addBox(-0.0675F, -27.2568F, 47.753F, 0.0F, 17.0F, 28.0F, 0.0F, false);
+
+
+        bodysection7 = new ModelRenderer(this);
+        bodysection7.setPos(-0.2334F, 0, 10F);
+        bodysection8.addChild(bodysection7);
+        bodysection7.texOffs(0, 92).addBox(-9.7261F, -10.2568F, -0.247F, 20.0F, 23.0F, 40.0F, 0.0F, false);
+        bodysection7.texOffs(312, 265).addBox(0.3325F, -27.2568F, -0.247F, 0.0F, 17.0F, 40.0F, 0.0F, false);
+
+        bodysection9 = new ModelRenderer(this);
+        bodysection9.setPos(-0.2334F, 0, 66F);
+        bodysection7.addChild(bodysection9);
+        bodysection9.texOffs(110, 0).addBox(-9.7261F, -11.2568F, -1.247F, 20.0F, 23.0F, 40.0F, 0.0F, false);
+        bodysection9.texOffs(184, 315).addBox(0.3325F, -28.2568F, -1.247F, 0.0F, 17.0F, 40.0F, 0.0F, false);
+
+        bodysection10 = new ModelRenderer(this);
+        bodysection10.setPos(-0.2334F, 0, 37F);
+        bodysection9.addChild(bodysection10);
+        bodysection10.texOffs(120, 252).addBox(-9.7261F, -11.2568F, 0.753F, 20.0F, 22.0F, 28.0F, 0.0F, false);
+        bodysection10.texOffs(350, 408).addBox(0.3325F, -28.2568F, 0.753F, 0.0F, 17.0F, 28.0F, 0.0F, false);
+
+        bodysection11 = new ModelRenderer(this);
+        bodysection11.setPos(-0.2334F, 0F, 28F);
+        bodysection10.addChild(bodysection11);
+        bodysection11.texOffs(120, 126).addBox(-9.7261F, -12.2568F, -0.247F, 20.0F, 23.0F, 40.0F, 0.0F, false);
+        bodysection11.texOffs(0, 331).addBox(0.3325F, -29.2568F, -0.247F, 0.0F, 17.0F, 40.0F, 0.0F, false);
+
+        bodysection12 = new ModelRenderer(this);
+        bodysection12.setPos(-0.2334F, 0, 39F);
+        bodysection11.addChild(bodysection12);
+        bodysection12.texOffs(120, 189).addBox(-9.7261F, -10.2568F, -0.247F, 20.0F, 23.0F, 40.0F, 0.0F, false);
+        bodysection12.texOffs(342, 60).addBox(0.3325F, -27.2568F, -0.247F, 0.0F, 17.0F, 40.0F, 0.0F, false);
+
+        bodysection13 = new ModelRenderer(this);
+        bodysection13.setPos(-0.2334F, 0, 37F);
+        bodysection12.addChild(bodysection13);
+        bodysection13.texOffs(216, 265).addBox(-9.7261F, -11.2568F, 0.753F, 20.0F, 22.0F, 28.0F, 0.0F, false);
+        bodysection13.texOffs(406, 408).addBox(0.3325F, -28.2568F, 0.753F, 0.0F, 17.0F, 28.0F, 0.0F, false);
+
+        bodysection14 = new ModelRenderer(this);
+        bodysection14.setPos(-0.2334F, 0, 27F);
+        bodysection13.addChild(bodysection14);
+        bodysection14.texOffs(0, 155).addBox(-9.7261F, -11.2568F, 0.753F, 20.0F, 23.0F, 40.0F, 0.0F, false);
+        bodysection14.texOffs(336, 165).addBox(0.3325F, -28.2568F, 0.753F, 0.0F, 17.0F, 40.0F, 0.0F, false);
+
+        bodysection15 = new ModelRenderer(this);
+        bodysection15.setPos(-0.2334F, 0, 40F);
+        bodysection14.addChild(bodysection15);
+        bodysection15.texOffs(230, 0).addBox(-8.7261F, -10.2568F, -0.247F, 18.0F, 21.0F, 39.0F, 0.0F, false);
+        bodysection15.texOffs(344, 322).addBox(0.2739F, -25.2568F, -0.247F, 0.0F, 15.0F, 39.0F, 0.0F, false);
+
+        bodysection16 = new ModelRenderer(this);
+        bodysection16.setPos(-0.2334F, 0, 38F);
+        bodysection15.addChild(bodysection16);
+        bodysection16.texOffs(240, 60).addBox(-7.7261F, -9.2568F, -0.5F, 16.0F, 19.0F, 35.0F, 0.0F, false);
+        bodysection16.texOffs(80, 350).addBox(0.2739F, -23.2568F, -0.5F, 0.0F, 14.0F, 35.0F, 0.0F, false);
+
+        bodysection17 = new ModelRenderer(this);
+        bodysection17.setPos(-0.2334F, 0, 34F);
+        bodysection16.addChild(bodysection17);
+        bodysection17.texOffs(0, 281).addBox(-6.7261F, -8.2568F, -0.247F, 14.0F, 17.0F, 33.0F, 0.0F, false);
+        bodysection17.texOffs(228, 379).addBox(0.2739F, -20.2568F, -0.247F, 0.0F, 12.0F, 33.0F, 0.0F, false);
+
+        bodysection18 = new ModelRenderer(this);
+        bodysection18.setPos(-0.2334F, 0, 33F);
+        bodysection17.addChild(bodysection18);
+        bodysection18.texOffs(94, 302).addBox(-5.7261F, -7.2568F, -1.247F, 12.0F, 15.0F, 33.0F, 0.0F, false);
+        bodysection18.texOffs(0, 388).addBox(0.2739F, -17.2568F, -1.247F, 0.0F, 10.0F, 33.0F, 0.0F, false);
+
+        bodysection19 = new ModelRenderer(this);
+        bodysection19.setPos(-0.2334F, 0, 32F);
+        bodysection18.addChild(bodysection19);
+        bodysection19.texOffs(340, 117).addBox(-4.7261F, -6.2568F, -1.247F, 10.0F, 13.0F, 33.0F, 0.0F, false);
+        bodysection19.texOffs(392, 264).addBox(0.2739F, -14.2568F, -1.247F, 0.0F, 8.0F, 33.0F, 0.0F, false);
+        bodysection19.texOffs(0, 0).addBox(0.3325F, -18.0877F, 31.0792F, 0.0F, 37.0F, 55.0F, 0.0F, false);
+
+        head = new ModelRenderer(this);
+        head.setPos(-0.1655F, 25.3632F, 49.765F);
+        head.texOffs(344, 376).addBox(-10.5F, -8.0F, -22.0F, 21.0F, 12.0F, 20.0F, 0.0F, false);
+
+        downhead = new ModelRenderer(this);
+        downhead.setPos(0.0F, 6.5265F, -4.7018F);
+        head.addChild(downhead);
+        setRotationAngle(downhead, -0.3927F, 0.0F, 0.0F);
+
+        head_r1 = new ModelRenderer(this);
+        head_r1.setPos(0.0F, -4.8989F, 0.0F);
+        downhead.addChild(head_r1);
+        setRotationAngle(head_r1, 0.3927F, 0.0F, 0.0F);
+        head_r1.texOffs(122, 412).addBox(-10.5F, 0.0F, -15.0F, 21.0F, 4.0F, 16.0F, 0.0F, false);
+
+        body = new ModelRenderer[]{bodysection1, bodysection2, bodysection3, bodysection4, bodysection5,
+                bodysection6, bodysection8, bodysection7, bodysection9, bodysection10,
+                bodysection11, bodysection12, bodysection13, bodysection14, bodysection15,
+                bodysection16, bodysection17, bodysection18, bodysection19};
     }
 
     public void renderFirstPersonArm(MatrixStack matrixStack, IVertexBuilder iVertexBuilder, int i, int i1, float v, float v1, float v2, float v3, HandSide handSide) {
@@ -603,12 +478,33 @@ public class SeiryuFlyModel extends MorphModel<LivingEntity> {
     public void renderFirstPersonLeg(MatrixStack matrixStack, IVertexBuilder iVertexBuilder, int i, int i1, float v, float v1, float v2, float v3, HandSide handSide) {
     }
 
-    public void setupAnim(LivingEntity p_225597_1_, float p_225597_2_, float p_225597_3_, float p_225597_4_, float p_225597_5_, float p_225597_6_) {
-        super.setupAnim(p_225597_1_, p_225597_2_, p_225597_3_, p_225597_4_, p_225597_5_, p_225597_6_);
-        this.headsection1.copyFrom(this.head);
-        this.necksection1.copyFrom(this.body);
-        necksection1.y -= 1;
-        necksection1.z += 8;
+    public void setupAnim(LivingEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+        super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+        if (false) {
+            for (int i = 0; i < body.length; i++) {
+                body[i].yRot += (float) Math.sin(i - Math.toRadians(ageInTicks) * 3) / body.length * i / 2;
+            }
+        } else {
+            body[0].xRot -= (float) Math.toRadians(90);
+            for (int i = 0; i < 7; i++) {
+                body[i].xRot += (float) Math.toRadians(15);
+            }
+            for (int i = 7; i < body.length; i++) {
+                body[i].yRot += (float) Math.toRadians(15);
+            }
+        }
+        IAbilityData abilityData = AbilityDataCapability.get(entity);
+        BoroBreathAbility boroBreathAbility = abilityData.getEquippedAbility(BoroBreathAbility.INSTANCE);
+        KaifuAbility kaifuAbility = abilityData.getEquippedAbility(KaifuAbility.INSTANCE);
+        if ((boroBreathAbility != null && boroBreathAbility.isCharging()) || (kaifuAbility != null && kaifuAbility.isContinuous())) {
+            this.head.xRot -= (float) (Math.toRadians(70));
+            this.downhead.xRot += (float) (Math.toRadians(140));
+        }
+        if (boroBreathAbility != null && boroBreathAbility.isCharging()) {
+            //TODO: Fireball
+        } else {
+            //TODO: Remove Fireball
+        }
     }
 
     public void setRotationAngle(ModelRenderer model, float x, float y, float z) {
@@ -620,8 +516,9 @@ public class SeiryuFlyModel extends MorphModel<LivingEntity> {
     @Override
     public void renderToBuffer(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
         matrixStack.pushPose();
-        matrixStack.scale(10, 10, 10);
-        this.headsection1.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+        matrixStack.scale(1, 1, 1);
+        matrixStack.translate(0, -1.2, -2.4);
+        this.head.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
         this.necksection1.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
         matrixStack.popPose();
     }
