@@ -1,5 +1,6 @@
 package net.warcar.uo_uo_no_mi.models;
 
+import com.google.common.collect.Lists;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.entity.LivingEntity;
@@ -10,6 +11,9 @@ import xyz.pixelatedw.mineminenomi.api.morph.MorphModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import xyz.pixelatedw.mineminenomi.data.entity.ability.AbilityDataCapability;
 import xyz.pixelatedw.mineminenomi.data.entity.ability.IAbilityData;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class SeiryuFlyModel extends MorphModel<LivingEntity> {
     private final ModelRenderer necksection1;
@@ -27,12 +31,12 @@ public class SeiryuFlyModel extends MorphModel<LivingEntity> {
     private final ModelRenderer bodysection12;
     private final ModelRenderer bodysection13;
     private final ModelRenderer bodysection14;
-    private final ModelRenderer bodysection15;
+    private final ModelRenderer[] bodysections15;
     private final ModelRenderer bodysection16;
     private final ModelRenderer bodysection17;
     private final ModelRenderer bodysection18;
     private final ModelRenderer bodysection19;
-    private final ModelRenderer[] body;
+    private final List<ModelRenderer> body;
     private final ModelRenderer rightarm2;
     private final ModelRenderer upperrightarm2;
     private final ModelRenderer lowerrightarm2;
@@ -370,23 +374,21 @@ public class SeiryuFlyModel extends MorphModel<LivingEntity> {
         bodysection6.texOffs(120, 63).addBox(-9.7261F, -11.2568F, 0.753F, 20.0F, 23.0F, 40.0F, 0.0F, false);
         bodysection6.texOffs(264, 322).addBox(0.3325F, -28.2568F, 0.753F, 0.0F, 17.0F, 40.0F, 0.0F, false);
 
+        bodysection7 = new ModelRenderer(this);
+        bodysection7.setPos(0F, 0F, 37F);
+        bodysection6.addChild(bodysection7);
+        bodysection7.texOffs(240, 165).addBox(-10.1261F, -10.2568F, 0.753F, 20.0F, 22.0F, 28.0F, 0.0F, false);
+        bodysection7.texOffs(66, 399).addBox(-0.0675F, -27.2568F, 0.753F, 0.0F, 17.0F, 28.0F, 0.0F, false);
 
         bodysection8 = new ModelRenderer(this);
-        bodysection8.setPos(0.1666F, 0F, 30F);
-        bodysection6.addChild(bodysection8);
-        bodysection8.texOffs(240, 165).addBox(-10.1261F, -10.2568F, 47.753F, 20.0F, 22.0F, 28.0F, 0.0F, false);
-        bodysection8.texOffs(66, 399).addBox(-0.0675F, -27.2568F, 47.753F, 0.0F, 17.0F, 28.0F, 0.0F, false);
-
-
-        bodysection7 = new ModelRenderer(this);
-        bodysection7.setPos(-0.2334F, 0, 10F);
-        bodysection8.addChild(bodysection7);
-        bodysection7.texOffs(0, 92).addBox(-9.7261F, -10.2568F, -0.247F, 20.0F, 23.0F, 40.0F, 0.0F, false);
-        bodysection7.texOffs(312, 265).addBox(0.3325F, -27.2568F, -0.247F, 0.0F, 17.0F, 40.0F, 0.0F, false);
+        bodysection8.setPos(-0.2334F, 0, 31F);
+        bodysection7.addChild(bodysection8);
+        bodysection8.texOffs(0, 92).addBox(-9.7261F, -10.2568F, -0.247F, 20.0F, 23.0F, 40.0F, 0.0F, false);
+        bodysection8.texOffs(312, 265).addBox(0.3325F, -27.2568F, -0.247F, 0.0F, 17.0F, 40.0F, 0.0F, false);
 
         bodysection9 = new ModelRenderer(this);
-        bodysection9.setPos(-0.2334F, 0, 66F);
-        bodysection7.addChild(bodysection9);
+        bodysection9.setPos(0F, 0, 32F);
+        bodysection8.addChild(bodysection9);
         bodysection9.texOffs(110, 0).addBox(-9.7261F, -11.2568F, -1.247F, 20.0F, 23.0F, 40.0F, 0.0F, false);
         bodysection9.texOffs(184, 315).addBox(0.3325F, -28.2568F, -1.247F, 0.0F, 17.0F, 40.0F, 0.0F, false);
 
@@ -420,15 +422,23 @@ public class SeiryuFlyModel extends MorphModel<LivingEntity> {
         bodysection14.texOffs(0, 155).addBox(-9.7261F, -11.2568F, 0.753F, 20.0F, 23.0F, 40.0F, 0.0F, false);
         bodysection14.texOffs(336, 165).addBox(0.3325F, -28.2568F, 0.753F, 0.0F, 17.0F, 40.0F, 0.0F, false);
 
-        bodysection15 = new ModelRenderer(this);
-        bodysection15.setPos(-0.2334F, 0, 40F);
-        bodysection14.addChild(bodysection15);
-        bodysection15.texOffs(230, 0).addBox(-8.7261F, -10.2568F, -0.247F, 18.0F, 21.0F, 39.0F, 0.0F, false);
-        bodysection15.texOffs(344, 322).addBox(0.2739F, -25.2568F, -0.247F, 0.0F, 15.0F, 39.0F, 0.0F, false);
+        bodysections15 = new ModelRenderer[34];
+        for (int i = 0; i < bodysections15.length; i++) {
+            ModelRenderer bodysection15 = new ModelRenderer(this);
+            bodysection15.setPos(-0.2334F, 0, 40F);
+            if (i == 0) {
+                bodysection14.addChild(bodysection15);
+            } else {
+                bodysections15[i - 1].addChild(bodysection15);
+            }
+            bodysection15.texOffs(230, 0).addBox(-8.7261F, -10.2568F, -0.247F, 18.0F, 21.0F, 39.0F, 0.0F, false);
+            bodysection15.texOffs(344, 322).addBox(0.2739F, -25.2568F, -0.247F, 0.0F, 15.0F, 39.0F, 0.0F, false);
+            bodysections15[i] = bodysection15;
+        }
 
         bodysection16 = new ModelRenderer(this);
         bodysection16.setPos(-0.2334F, 0, 38F);
-        bodysection15.addChild(bodysection16);
+        bodysections15[bodysections15.length - 1].addChild(bodysection16);
         bodysection16.texOffs(240, 60).addBox(-7.7261F, -9.2568F, -0.5F, 16.0F, 19.0F, 35.0F, 0.0F, false);
         bodysection16.texOffs(80, 350).addBox(0.2739F, -23.2568F, -0.5F, 0.0F, 14.0F, 35.0F, 0.0F, false);
 
@@ -466,10 +476,11 @@ public class SeiryuFlyModel extends MorphModel<LivingEntity> {
         setRotationAngle(head_r1, 0.3927F, 0.0F, 0.0F);
         head_r1.texOffs(122, 412).addBox(-10.5F, 0.0F, -15.0F, 21.0F, 4.0F, 16.0F, 0.0F, false);
 
-        body = new ModelRenderer[]{bodysection1, bodysection2, bodysection3, bodysection4, bodysection5,
-                bodysection6, bodysection8, bodysection7, bodysection9, bodysection10,
-                bodysection11, bodysection12, bodysection13, bodysection14, bodysection15,
-                bodysection16, bodysection17, bodysection18, bodysection19};
+        body = Lists.newArrayList(bodysection1, bodysection2, bodysection3, bodysection4, bodysection5,
+                bodysection6, bodysection7, bodysection8, bodysection9, bodysection10,
+                bodysection11, bodysection12, bodysection13, bodysection14);
+        body.addAll(Arrays.asList(bodysections15));
+        body.addAll(Lists.newArrayList(bodysection16, bodysection17, bodysection18, bodysection19));
     }
 
     public void renderFirstPersonArm(MatrixStack matrixStack, IVertexBuilder iVertexBuilder, int i, int i1, float v, float v1, float v2, float v3, HandSide handSide) {
@@ -480,17 +491,18 @@ public class SeiryuFlyModel extends MorphModel<LivingEntity> {
 
     public void setupAnim(LivingEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-        if (false) {
-            for (int i = 0; i < body.length; i++) {
-                body[i].yRot += (float) Math.sin(i - Math.toRadians(ageInTicks) * 3) / body.length * i / 2;
+        if (Math.pow(entity.xo - entity.getX(), 2) + Math.pow(entity.zo - entity.getZ(), 2) > 0) {
+            for (int i = 0; i < body.size(); i++) {
+                body.get(i).yRot += (float) Math.sin(i - Math.toRadians(ageInTicks) * 3) / body.size() * i / 2;
             }
         } else {
-            body[0].xRot -= (float) Math.toRadians(90);
-            for (int i = 0; i < 7; i++) {
-                body[i].xRot += (float) Math.toRadians(15);
+            body.get(0).xRot -= (float) Math.toRadians(90);
+            body.get(0).z -= 8;
+            for (int i = 0; i < 6; i++) {
+                body.get(i).xRot += (float) Math.toRadians(15);
             }
-            for (int i = 7; i < body.length; i++) {
-                body[i].yRot += (float) Math.toRadians(15);
+            for (int i = 6; i < body.size(); i++) {
+                body.get(i).yRot += (float) Math.toRadians(25 - (double) i / 3);
             }
         }
         IAbilityData abilityData = AbilityDataCapability.get(entity);
@@ -499,11 +511,6 @@ public class SeiryuFlyModel extends MorphModel<LivingEntity> {
         if ((boroBreathAbility != null && boroBreathAbility.isCharging()) || (kaifuAbility != null && kaifuAbility.isContinuous())) {
             this.head.xRot -= (float) (Math.toRadians(70));
             this.downhead.xRot += (float) (Math.toRadians(140));
-        }
-        if (boroBreathAbility != null && boroBreathAbility.isCharging()) {
-            //TODO: Fireball
-        } else {
-            //TODO: Remove Fireball
         }
     }
 
@@ -516,8 +523,8 @@ public class SeiryuFlyModel extends MorphModel<LivingEntity> {
     @Override
     public void renderToBuffer(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
         matrixStack.pushPose();
-        matrixStack.scale(1, 1, 1);
-        matrixStack.translate(0, -1.2, -2.4);
+        matrixStack.scale(10, 10, 10);
+        matrixStack.translate(0, -1.6, -2.4);
         this.head.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
         this.necksection1.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
         matrixStack.popPose();

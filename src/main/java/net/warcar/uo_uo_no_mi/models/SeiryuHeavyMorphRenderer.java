@@ -9,6 +9,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.warcar.uo_uo_no_mi.UoUoMod;
 import net.warcar.uo_uo_no_mi.init.UoMorphs;
+import net.warcar.uo_uo_no_mi.morphs.BoroBreathLayer;
 import xyz.pixelatedw.mineminenomi.api.morph.MorphModel;
 import xyz.pixelatedw.mineminenomi.renderers.layers.morphs.PartialZoanHeldItemLayer;
 import xyz.pixelatedw.mineminenomi.renderers.morphs.ZoanMorphRenderer;
@@ -18,6 +19,7 @@ public class SeiryuHeavyMorphRenderer<T extends AbstractClientPlayerEntity, M ex
         super(renderManager, UoMorphs.SEIRYU_HEAVY.get());
         this.removeLayer(HeldItemLayer.class);
         this.addLayer(new PartialZoanHeldItemLayer(this, new SeiryuHeavyModel()));
+        this.addLayer(new BoroBreathLayer<>(this, false));
     }
 
     public ResourceLocation getTextureLocation(AbstractClientPlayerEntity entity) {

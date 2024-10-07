@@ -27,12 +27,11 @@ public class KaenDaikoLayer<T extends LivingEntity, M extends EntityModel<T>> ex
     public void render(MatrixStack matrixStack, IRenderTypeBuffer buffer, int packedLight, T entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
         if (!entity.isInvisible()) {
             this.model.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-            this.model.renderToBuffer(matrixStack, buffer.getBuffer(ModRenderTypes.getZoanRenderType(this.getTextureLocation(entity))), packedLight, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
             KaenDaikoAbility ability = AbilityDataCapability.get(entity).getEquippedAbility(KaenDaikoAbility.INSTANCE);
             if (ability != null && ability.isContinuous()) {
                 matrixStack.pushPose();
                 matrixStack.scale(5, 5, 5);
-                this.model.renderToBuffer(matrixStack, buffer.getBuffer(ModRenderTypes.TRANSPARENT_COLOR), packedLight, OverlayTexture.NO_OVERLAY, 1, 0.2f, 0, 0.3f);
+                this.model.renderToBuffer(matrixStack, buffer.getBuffer(ModRenderTypes.getZoanRenderType(new ResourceLocation(UoUoMod.MOD_ID, "textures/dragon_full_torch.png"))), packedLight, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
                 matrixStack.popPose();
             }
         }

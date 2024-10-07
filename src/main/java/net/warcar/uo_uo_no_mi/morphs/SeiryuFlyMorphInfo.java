@@ -7,9 +7,11 @@ import net.minecraft.entity.Pose;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.warcar.uo_uo_no_mi.UoUoMod;
 import net.warcar.uo_uo_no_mi.init.UoAbilities;
 import net.warcar.uo_uo_no_mi.models.SeiryuFlyModel;
+import net.warcar.uo_uo_no_mi.models.SeiryuFlyMorphRenderer;
 import xyz.pixelatedw.mineminenomi.api.morph.MorphInfo;
 import xyz.pixelatedw.mineminenomi.api.morph.MorphModel;
 import xyz.pixelatedw.mineminenomi.items.AkumaNoMiItem;
@@ -27,6 +29,11 @@ public class SeiryuFlyMorphInfo extends MorphInfo {
 
     public String getForm() {
         return "seiryu_fly";
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public IRenderFactory getRendererFactory() {
+        return new SeiryuFlyMorphRenderer.Factory<>();
     }
 
     @OnlyIn(Dist.CLIENT)
