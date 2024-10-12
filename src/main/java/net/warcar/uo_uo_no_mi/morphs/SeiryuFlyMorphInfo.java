@@ -56,7 +56,7 @@ public class SeiryuFlyMorphInfo extends MorphInfo {
     }
 
     public double getCameraZoom(LivingEntity entity) {
-        return 20;
+        return 45;
     }
 
     @Nullable

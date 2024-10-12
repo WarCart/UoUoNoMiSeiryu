@@ -46,7 +46,7 @@ public class SeiryuHeavyPointAbility extends MorphAbility2 {
 
     public static boolean isFullyDrunk(LivingEntity entity) {
         EffectInstance instance = entity.getEffect(ModEffects.DRUNK.get());
-        return isActive(entity) &&  instance != null && instance.getAmplifier() >= 4;
+        return isActive(entity) && instance != null && instance.getAmplifier() >= 4;
     }
 
     public static boolean isActive(LivingEntity entity) {

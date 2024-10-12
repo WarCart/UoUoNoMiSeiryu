@@ -49,7 +49,7 @@ public class UoAbilities {
 
     private static <T extends IAbility>  void registerAbility(AbilityCore<T> core) {
         String resourceName = WyHelper.getResourceName(core.getId());
-        ResourceLocation key = new ResourceLocation("mineminenomi", resourceName);
+        ResourceLocation key = new ResourceLocation(UoUoMod.MOD_ID, resourceName);
         RegistryObject<AbilityCore<?>> ret = RegistryObject.of(key, ModRegistries.ABILITIES);
         if (!ABILITIES.getEntries().contains(ret)) {
             ABILITIES.register(resourceName, () -> core);

@@ -50,7 +50,7 @@ public class KaenDaikoMorphInfo extends MorphInfo {
     }
 
     public double getCameraZoom(LivingEntity entity) {
-        return 45;
+        return 100;
     }
 
     @Nullable
