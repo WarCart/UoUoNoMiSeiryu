@@ -31,7 +31,7 @@ public class KaenDaikoLayer<T extends LivingEntity, M extends EntityModel<T>> ex
             if (ability != null && ability.isContinuous()) {
                 matrixStack.pushPose();
                 matrixStack.scale(5, 5, 5);
-                this.model.renderToBuffer(matrixStack, buffer.getBuffer(ModRenderTypes.getZoanRenderType(new ResourceLocation(UoUoMod.MOD_ID, "textures/dragon_full_torch.png"))), packedLight, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
+                this.model.renderToBuffer(matrixStack, buffer.getBuffer(ModRenderTypes.getZoanRenderType(new ResourceLocation(UoUoMod.MOD_ID, "textures/dragon_full_torch.png"))), packedLight, OverlayTexture.NO_OVERLAY, 1, 1, 1, 0.85f);
                 matrixStack.popPose();
             }
         }

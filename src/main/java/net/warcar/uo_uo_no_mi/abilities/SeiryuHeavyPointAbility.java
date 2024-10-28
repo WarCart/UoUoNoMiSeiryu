@@ -26,8 +26,8 @@ public class SeiryuHeavyPointAbility extends MorphAbility2 {
     public SeiryuHeavyPointAbility(AbilityCore<SeiryuHeavyPointAbility> core) {
         super(core);
         this.continuousComponent.addStartEvent(this::onStart);
-        this.statsComponent.addAttributeModifier(ModAttributes.TOUGHNESS, new AbilityAttributeModifier(AttributeHelper.MORPH_TOUGHNESS_UUID, INSTANCE, "Seiryu Heavy Point Toughness Modifier", 120, AttributeModifier.Operation.ADDITION), entity -> this.isContinuous());
-        this.statsComponent.addAttributeModifier(Attributes.ARMOR, new AbilityAttributeModifier(AttributeHelper.MORPH_ARMOR_UUID, INSTANCE, "Seiryu Heavy Point Armor Modifier", 30, AttributeModifier.Operation.ADDITION), entity -> this.isContinuous());
+        this.statsComponent.addAttributeModifier(ModAttributes.TOUGHNESS, new AbilityAttributeModifier(AttributeHelper.MORPH_TOUGHNESS_UUID, INSTANCE, "Seiryu Heavy Point Toughness Modifier", 2, AttributeModifier.Operation.ADDITION), entity -> this.isContinuous());
+        this.statsComponent.addAttributeModifier(Attributes.ARMOR, new AbilityAttributeModifier(AttributeHelper.MORPH_ARMOR_UUID, INSTANCE, "Seiryu Heavy Point Armor Modifier", 50, AttributeModifier.Operation.ADDITION), entity -> this.isContinuous());
     }
 
     private void onStart(LivingEntity livingEntity, IAbility ability) {

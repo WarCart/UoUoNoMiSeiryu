@@ -6,6 +6,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.Pose;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraftforge.entity.PartEntity;
 
 public class LivingPartEntity extends PartEntity<LivingEntity> {
@@ -22,10 +23,10 @@ public class LivingPartEntity extends PartEntity<LivingEntity> {
     protected void defineSynchedData() {
     }
 
-    protected void readAdditionalSaveData(CompoundNBT p_70037_1_) {
+    protected void readAdditionalSaveData(CompoundNBT nbt) {
     }
 
-    protected void addAdditionalSaveData(CompoundNBT p_213281_1_) {
+    protected void addAdditionalSaveData(CompoundNBT nbt) {
     }
     public boolean isPickable() {
         return false;

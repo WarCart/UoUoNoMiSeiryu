@@ -28,7 +28,7 @@ public class BoroBreathLayer<T extends LivingEntity, M extends EntityModel<T>> e
             matrixStack.pushPose();
             if (this.large) {
                 matrixStack.scale(20, 20, 20);
-                matrixStack.translate(0, -0.2, -0.4);
+                matrixStack.translate(0, -1, -1.4);
             } else {
                 matrixStack.translate(0, -2.5, -0.4);
             }

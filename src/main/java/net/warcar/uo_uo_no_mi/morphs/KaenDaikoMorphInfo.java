@@ -9,6 +9,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.warcar.uo_uo_no_mi.init.UoAbilities;
 import net.warcar.uo_uo_no_mi.models.KaenDaikoMorphRenderer;
+import net.warcar.uo_uo_no_mi.models.NullMorphModel;
 import xyz.pixelatedw.mineminenomi.api.morph.MorphInfo;
 import xyz.pixelatedw.mineminenomi.api.morph.MorphModel;
 import xyz.pixelatedw.mineminenomi.items.AkumaNoMiItem;
@@ -38,7 +39,7 @@ public class KaenDaikoMorphInfo extends MorphInfo {
 
     @OnlyIn(Dist.CLIENT)
     public MorphModel getModel() {
-        return new NoMorphModel<>(false);
+        return new NullMorphModel();
     }
 
     public String getDisplayName() {

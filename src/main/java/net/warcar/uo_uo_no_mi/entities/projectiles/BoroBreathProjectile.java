@@ -23,20 +23,16 @@ public class BoroBreathProjectile extends AbilityProjectileEntity {
 
     public BoroBreathProjectile(World world, LivingEntity thrower, @Nullable AbilityCore parent, boolean large) {
         super(large ? UoProjectiles.BORO_BREATH_LARGE.get() : UoProjectiles.BORO_BREATH.get(), world, thrower, parent);
-        this.setCanGetStuckInGround();
+        this.setBlocksAffectedLimit(250);
         this.setPassThroughEntities();
         this.setDamage(large ? 50 : 100);
         this.setLife(200);
         this.onBlockImpactEvent = pos -> {
-            collisions++;
             ExplosionAbility explosion = AbilityHelper.newExplosion(thrower, world, pos.getX(), pos.getY(), pos.getZ(), large ? 30 : 10);
             explosion.setFireAfterExplosion(true);
             explosion.setSmokeParticles(new CommonExplosionParticleEffect());
             explosion.setStaticDamage(20);
             explosion.doExplosion();
-            if (collisions >= 100) {
-                this.remove();
-            }
         };
     }
 }

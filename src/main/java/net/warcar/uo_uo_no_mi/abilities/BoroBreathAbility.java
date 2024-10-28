@@ -11,7 +11,6 @@ import xyz.pixelatedw.mineminenomi.api.abilities.components.ChargeComponent;
 import xyz.pixelatedw.mineminenomi.api.abilities.components.ProjectileComponent;
 import xyz.pixelatedw.mineminenomi.api.abilities.components.RequireMorphComponent;
 import xyz.pixelatedw.mineminenomi.api.helpers.AbilityHelper;
-import xyz.pixelatedw.mineminenomi.api.helpers.MorphHelper;
 import xyz.pixelatedw.mineminenomi.entities.projectiles.AbilityProjectileEntity;
 
 public class BoroBreathAbility extends Ability {
@@ -45,5 +44,13 @@ public class BoroBreathAbility extends Ability {
 
     private AbilityProjectileEntity factory(LivingEntity entity) {
         return new BoroBreathProjectile(entity.level, entity, BoroBreathAbility.INSTANCE, SeiryuFlyPointAbility.isActive(entity));
+    }
+
+    public void stopCharging(LivingEntity entity) {
+        this.chargeComponent.forceStopCharging(entity);
+        ExplosionAbility ability = AbilityHelper.newExplosion(entity, entity.level, entity.getX(), entity.getY(), entity.getZ(), 4);
+        ability.setDamageOwner(true);
+        ability.setFireAfterExplosion(true);
+        ability.doExplosion();
     }
 }
